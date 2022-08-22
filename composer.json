@@ -470,6 +470,9 @@
             "drupal/core": "-p2"
         },
         "patches": {
+            "drupal/fico": {
+                "Call to undefined method Drupal::entityManager": "https://www.drupal.org/files/issues/2022-08-11/3303003-use-entity_type-service.patch"
+            }
         }
     }
 }
