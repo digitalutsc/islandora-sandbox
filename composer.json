@@ -453,7 +453,11 @@
         ],
         "post-update-cmd": [
             "@composer drupal:scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@patch-files"
+        ],
+        "patch-files": [
+            "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
         ]
     },
     "extra": {
@@ -474,7 +478,23 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
+        "enable-patching": true,
         "patches": {
+            "drupal/fico": {
+              "deprecated-3084136-3.patch": "https://www.drupal.org/files/issues/2022-02-10/deprecated-3084136-3.patch"
+            },
+            "mjordan/islandora_workbench_integration": {
+              "workbench_integration.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/workbench_integration.patch"
+            },
+            "drupal/rest_oai_pmh": {
+              "mods_view_render.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/mods_view_render.patch"
+            },
+            "drupal/facets": {
+              "advanced_search_issues_9.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/advanced_search_issues_9.patch"
+            },
+            "drupal/views_flipped_table": {
+              "accessibility_views_flipped_table_convert_to_layout_table.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/accessibility_views_flipped_table_convert_to_layout_table.patch"
+            }
         },
         "merge-plugin": {
             "include": [
