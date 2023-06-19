@@ -224,6 +224,7 @@
         "drupal/fontawesome": "^2.23",
         "drupal/geocoder": "^3.29",
         "drupal/geolocation": "^3.10",
+        "drupal/imagemagick": "^3.4",
         "drupal/json_field": "^1.0@RC",
         "drupal/jwt": "^1.0@beta",
         "drupal/libraries": "^3.0@beta",

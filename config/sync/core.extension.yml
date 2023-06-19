@@ -44,6 +44,7 @@ module:
   field_ui: 0
   file: 0
   file_entity: 0
+  file_mdm: 0
   filemime: 0
   filter: 0
   fits: 0
@@ -57,6 +58,7 @@ module:
   help: 0
   history: 0
   image: 0
+  imagemagick: 0
   islandora_breadcrumbs: 0
   islandora_iiif: 0
   islandora_mirador: 0
@@ -107,6 +109,7 @@ module:
   search_api_solr: 0
   serialization: 0
   shortcut: 0
+  sophron: 0
   syslog: 0
   system: 0
   taxonomy: 0
