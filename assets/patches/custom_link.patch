@@ -1,0 +1,242 @@
+diff --git a/better_social_sharing_buttons.libraries.yml b/better_social_sharing_buttons.libraries.yml
+index 363662d..0da8a1e 100644
+--- a/better_social_sharing_buttons.libraries.yml
++++ b/better_social_sharing_buttons.libraries.yml
+@@ -9,9 +9,11 @@ copy-current-url:
+   version: 1.x
+   js:
+     js/copy-current-url.js: {}
++  dependencies:
++    - core/drupalSettings
+ 
+ # Load print css
+ print-css:
+   version: 1.x
+   js:
+-    js/print.js: {}
++    js/print.js: {}
+\ No newline at end of file
+diff --git a/better_social_sharing_buttons.module b/better_social_sharing_buttons.module
+index fbe8f4a..2daf472 100644
+--- a/better_social_sharing_buttons.module
++++ b/better_social_sharing_buttons.module
+@@ -10,6 +10,7 @@ use Drupal\Core\Url;
+ use Drupal\node\Entity\NodeType;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
++use Drupal\node\NodeInterface;
+ 
+ /**
+  * Implements hook_theme().
+@@ -90,6 +91,24 @@ function better_social_sharing_buttons_preprocess_better_social_sharing_buttons(
+     $icon_set = \Drupal::config('better_social_sharing_buttons.settings')->get('iconset');
+   }
+   $variables['social_buttons_sprite'] = Url::fromUri('internal:/' . \Drupal::service('extension.list.module')->getPath('better_social_sharing_buttons') . '/assets/dist/sprites/' . $icon_set . '.svg')->toString();
++
++  if (($node = \Drupal::routeMatch()->getParameter('node'))) {
++    $config = \Drupal::config('better_social_sharing_buttons.settings');
++    /* Check if we aren't required to use a slightly different URL */
++    if ($config->get('preferred_url')) {
++      if ($node instanceof NodeInterface) {
++        $url = $node->get('field_location_url')->first()->getUrl()->toString();
++        \Drupal::logger('testing')->notice($url);
++        if (isset($url)) {
++          $variables['over_rides']['preferred_url'] = $url;
++          $variables['#cache']['max-age'] = 0;
++          $variables['#attached']['library'][] = 'copy-current-url/copy-current-url-js';
++          // pass variable to Drupal.Settings
++          $variables['#attached']['drupalSettings']['url'] = $url;
++        }
++      }
++    }
++  }
+ }
+ 
+ /**
+diff --git a/js/copy-current-url.js b/js/copy-current-url.js
+index 9044eee..a0d70d8 100644
+--- a/js/copy-current-url.js
++++ b/js/copy-current-url.js
+@@ -1,4 +1,4 @@
+-(function () {
++(function (Drupal, drupalSettings) {
+   'use strict';
+ 
+ /* Main function, listens for a click event,
+@@ -6,15 +6,19 @@ calls all the other functions upon element click */
+   Drupal.behaviors.copyButtonElements = {
+     attach: function (context) {
+       let btnCopies = document.querySelectorAll('.btnCopy.social-sharing-buttons__button');
++      let url = drupalSettings.url;
++      if(url === undefined){
++        url = window.location.href
++      }
+       btnCopies.forEach((btnCopy) => {
+         btnCopy.addEventListener('click', function (event) {
+           // Checks if page is using HTTPS
+           if (window.isSecureContext) {
+             // Calls the secureCopyToClipboard function
+-            Drupal.secureCopyToClipboard(window.location.href);
++            Drupal.secureCopyToClipboard(url);
+           } else {
+             // If site is not using HTTPS, use the fallback function
+-            Drupal.unsecureCopyToClipboard(window.location.href);
++            Drupal.unsecureCopyToClipboard(url);
+           }
+           // Calls the function that pops up the message
+           Drupal.showPopUpMessage(event.currentTarget);
+@@ -70,4 +74,4 @@ calls all the other functions upon element click */
+     }
+   };
+ 
+-})(Drupal);
++})(Drupal, drupalSettings);
+diff --git a/src/Form/BetterSocialSharingButtonsForm.php b/src/Form/BetterSocialSharingButtonsForm.php
+index 46d1be3..a906c90 100644
+--- a/src/Form/BetterSocialSharingButtonsForm.php
++++ b/src/Form/BetterSocialSharingButtonsForm.php
+@@ -134,6 +134,14 @@ class BetterSocialSharingButtonsForm extends ConfigFormBase {
+       '#default_value' => $config->get('node_field') ?: FALSE,
+     ];
+ 
++    $form['use_url_field'] = [
++      '#type' => 'textfield',
++      '#title' => $this->t('Url Field to use'),
++      '#default_value' => $config->get('preferred_url') ?: '',
++      '#description' => $this->t('Prefer this field over the entity url'),
++      '#required' => FALSE,
++    ];
++
+     return parent::buildForm($form, $form_state);
+   }
+ 
+@@ -149,6 +157,7 @@ class BetterSocialSharingButtonsForm extends ConfigFormBase {
+     $config->set('print_css', $form_state->getValue('print_css'));
+     $config->set('iconset', $form_state->getValue('iconset'));
+     $config->set('node_field', $form_state->getValue('node_field'));
++    $config->set('preferred_url', $form_state->getValue('use_url_field'));
+     $config->save();
+     $this->messenger()->addMessage($this->t("Configuration saved!"));
+   }
+diff --git a/templates/better-social-sharing-buttons.html.twig b/templates/better-social-sharing-buttons.html.twig
+index 2bdad5c..fd9ce65 100644
+--- a/templates/better-social-sharing-buttons.html.twig
++++ b/templates/better-social-sharing-buttons.html.twig
+@@ -1,12 +1,17 @@
+ {{ attach_library('better_social_sharing_buttons/styling') }}
+ 
++{% set url = items.page_url %}
++{% if over_rides %}
++  {% set url = over_rides.preferred_url %}
++{% endif %}
++
+ {# --- Include svg sprite --- #}
+ <div style="display: none"><link rel="preload" href="{{ social_buttons_sprite }}" as="image" type="image/svg+xml" crossorigin="anonymous" /></div>
+ 
+ <div class="social-sharing-buttons">
+     {# Facebook share button #}
+     {% if items.services.facebook %}
+-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ items.page_url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Facebook" aria-label="{{ 'Share to'|t }} Facebook" class="social-sharing-buttons__button share-facebook" rel="noopener">
++        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Facebook" aria-label="{{ 'Share to'|t }} Facebook" class="social-sharing-buttons__button share-facebook" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#facebook" />
+             </svg>
+@@ -15,7 +20,7 @@
+ 
+     {# Twitter share button #}
+     {% if items.services.twitter %}
+-        <a href="https://twitter.com/intent/tweet?text={{ items.title }}+{{ items.page_url }}" target="_blank" title="{{ 'Share to'|t }} Twitter" aria-label="{{ 'Share to'|t }} Twitter" class="social-sharing-buttons__button share-twitter" rel="noopener">
++        <a href="https://twitter.com/intent/tweet?text={{ items.title }}+{{ url }}" target="_blank" title="{{ 'Share to'|t }} Twitter" aria-label="{{ 'Share to'|t }} Twitter" class="social-sharing-buttons__button share-twitter" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#twitter" />
+             </svg>
+@@ -24,7 +29,7 @@
+ 
+     {# WhatsApp share button #}
+     {% if items.services.whatsapp %}
+-        <a href="https://wa.me/?text={{ items.page_url }}" target="_blank" title="{{ 'Share to'|t }} WhatsApp" aria-label="{{ 'Share to'|t }} WhatsApp" class="social-sharing-buttons__button share-whatsapp" rel="noopener">
++        <a href="https://wa.me/?text={{ url }}" target="_blank" title="{{ 'Share to'|t }} WhatsApp" aria-label="{{ 'Share to'|t }} WhatsApp" class="social-sharing-buttons__button share-whatsapp" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#whatsapp" />
+             </svg>
+@@ -33,7 +38,7 @@
+ 
+     {# Facebook Messenger share button #}
+     {% if items.services.facebook_messenger %}
+-        <a href="https://www.facebook.com/dialog/send?app_id={{ items.facebook_app_id }}&amp;link={{ items.page_url }}&amp;redirect_uri={{ url('<current>') }}" target="_blank" title="{{ 'Share to'|t }} Facebook Messenger" aria-label="{{ 'Share to'|t }} Facebook Messenger" class="social-sharing-buttons__button share-facebook-messenger" rel="noopener">
++        <a href="https://www.facebook.com/dialog/send?app_id={{ items.facebook_app_id }}&amp;link={{ url }}&amp;redirect_uri={{ url('<current>') }}" target="_blank" title="{{ 'Share to'|t }} Facebook Messenger" aria-label="{{ 'Share to'|t }} Facebook Messenger" class="social-sharing-buttons__button share-facebook-messenger" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#messenger" />
+             </svg>
+@@ -42,7 +47,7 @@
+ 
+     {# Pinterest share button #}
+     {% if items.services.pinterest %}
+-        <a href="https://pinterest.com/pin/create/link/?url={{ items.page_url }}&amp;description={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Pinterest" aria-label="{{ 'Share to'|t }} Pinterest" class="social-sharing-buttons__button share-pinterest" rel="noopener">
++        <a href="https://pinterest.com/pin/create/link/?url={{ url }}&amp;description={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Pinterest" aria-label="{{ 'Share to'|t }} Pinterest" class="social-sharing-buttons__button share-pinterest" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#pinterest" />
+             </svg>
+@@ -51,7 +56,7 @@
+ 
+     {# Linkedin share button #}
+     {% if items.services.linkedin %}
+-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ items.page_url }}" target="_blank" title="{{ 'Share to'|t }} Linkedin" aria-label="{{ 'Share to'|t }} Linkedin" class="social-sharing-buttons__button share-linkedin" rel="noopener">
++        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url }}" target="_blank" title="{{ 'Share to'|t }} Linkedin" aria-label="{{ 'Share to'|t }} Linkedin" class="social-sharing-buttons__button share-linkedin" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#linkedin" />
+             </svg>
+@@ -60,7 +65,7 @@
+ 
+     {# Xing share button #}
+     {% if items.services.xing %}
+-        <a href="https://www.xing.com/spi/shares/new?url={{ items.page_url }}" target="_blank" title="{{ 'Share to'|t }} Xing" aria-label="{{ 'Share to'|t }} Xing" class="social-sharing-buttons__button share-xing" rel="noopener">
++        <a href="https://www.xing.com/spi/shares/new?url={{ url }}" target="_blank" title="{{ 'Share to'|t }} Xing" aria-label="{{ 'Share to'|t }} Xing" class="social-sharing-buttons__button share-xing" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#xing" />
+             </svg>
+@@ -69,7 +74,7 @@
+ 
+     {# Digg share button #}
+     {% if items.services.digg %}
+-        <a href="https://www.digg.com/submit?phase=2&amp;url={{ items.page_url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Digg" aria-label="{{ 'Share to'|t }} Digg" class="social-sharing-buttons__button share-digg" rel="noopener">
++        <a href="https://www.digg.com/submit?phase=2&amp;url={{ url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Digg" aria-label="{{ 'Share to'|t }} Digg" class="social-sharing-buttons__button share-digg" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#digg" />
+             </svg>
+@@ -78,7 +83,7 @@
+ 
+     {# Tumblr share button #}
+     {% if items.services.tumblr %}
+-        <a href="https://www.tumblr.com/share?v=3&amp;u={{ items.page_url }}&amp;t={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Tumblr" aria-label="{{ 'Share to'|t }} Tumblr" class="social-sharing-buttons__button share-tumblr" rel="noopener">
++        <a href="https://www.tumblr.com/share?v=3&amp;u={{ url }}&amp;t={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Tumblr" aria-label="{{ 'Share to'|t }} Tumblr" class="social-sharing-buttons__button share-tumblr" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#tumblr" />
+             </svg>
+@@ -87,7 +92,7 @@
+ 
+     {# Reddit share button #}
+     {% if items.services.reddit %}
+-        <a href="https://www.reddit.com/submit?url={{ items.page_url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Reddit" aria-label="{{ 'Share to'|t }} Reddit" class="social-sharing-buttons__button share-reddit" rel="noopener">
++        <a href="https://www.reddit.com/submit?url={{ url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Reddit" aria-label="{{ 'Share to'|t }} Reddit" class="social-sharing-buttons__button share-reddit" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#reddit" />
+             </svg>
+@@ -96,7 +101,7 @@
+ 
+     {# Evernote share button #}
+     {% if items.services.evernote %}
+-        <a href="https://www.evernote.com/clip.action?url={{ items.page_url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Evernote" aria-label="{{ 'Share to'|t }} Evernote" class="social-sharing-buttons__button share-evernote" rel="noopener">
++        <a href="https://www.evernote.com/clip.action?url={{ url }}&amp;title={{ items.title }}" target="_blank" title="{{ 'Share to'|t }} Evernote" aria-label="{{ 'Share to'|t }} Evernote" class="social-sharing-buttons__button share-evernote" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#evernote" />
+             </svg>
+@@ -105,7 +110,7 @@
+ 
+     {# Email share button #}
+     {% if items.services.email %}
+-        <a href="mailto:?subject={{ items.title }}&amp;body={{ items.page_url }}" title="{{ 'Share to'|t }} Email" aria-label="{{ 'Share to'|t }} Email" class="social-sharing-buttons__button share-email" target="_blank" rel="noopener">
++        <a href="mailto:?subject={{ items.title }}&amp;body={{ url }}" title="{{ 'Share to'|t }} Email" aria-label="{{ 'Share to'|t }} Email" class="social-sharing-buttons__button share-email" target="_blank" rel="noopener">
+             <svg width="{{ items.width }}" height="{{ items.width }}" style="border-radius:{{ items.radius }};">
+                 <use href="{{ social_buttons_sprite }}#email" />
+             </svg>
