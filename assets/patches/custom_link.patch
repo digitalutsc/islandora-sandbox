@@ -17,7 +17,7 @@ index 363662d..0da8a1e 100644
 +    js/print.js: {}
 \ No newline at end of file
 diff --git a/better_social_sharing_buttons.module b/better_social_sharing_buttons.module
-index fbe8f4a..2daf472 100644
+index fbe8f4a..f69e0d2 100644
 --- a/better_social_sharing_buttons.module
 +++ b/better_social_sharing_buttons.module
 @@ -10,6 +10,7 @@ use Drupal\Core\Url;
@@ -28,7 +28,7 @@ index fbe8f4a..2daf472 100644
  
  /**
   * Implements hook_theme().
-@@ -90,6 +91,24 @@ function better_social_sharing_buttons_preprocess_better_social_sharing_buttons(
+@@ -90,6 +91,28 @@ function better_social_sharing_buttons_preprocess_better_social_sharing_buttons(
      $icon_set = \Drupal::config('better_social_sharing_buttons.settings')->get('iconset');
    }
    $variables['social_buttons_sprite'] = Url::fromUri('internal:/' . \Drupal::service('extension.list.module')->getPath('better_social_sharing_buttons') . '/assets/dist/sprites/' . $icon_set . '.svg')->toString();
@@ -38,8 +38,12 @@ index fbe8f4a..2daf472 100644
 +    /* Check if we aren't required to use a slightly different URL */
 +    if ($config->get('preferred_url')) {
 +      if ($node instanceof NodeInterface) {
-+        $url = $node->get('field_location_url')->first()->getUrl()->toString();
-+        \Drupal::logger('testing')->notice($url);
++        $field_type = $node->get('field_location_url')->getFieldDefinition()->getType();
++        if($field_type === link){
++          $url = $node->get('field_location_url')->first()->getUrl()->toString();
++        }else{
++          $url = $node->get('field_location_url')->first()->getValue()->toString();
++        }
 +        if (isset($url)) {
 +          $variables['over_rides']['preferred_url'] = $url;
 +          $variables['#cache']['max-age'] = 0;
