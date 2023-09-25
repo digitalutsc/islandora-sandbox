@@ -16,6 +16,18 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+          "type": "package",
+          "package": {
+            "name": "islandora_lite/dgi_fixity",
+            "version": "1.1.0",
+            "type": "drupal-module",
+            "dist": {
+              "url": "https://github.com/discoverygarden/dgi_fixity/archive/refs/tags/v1.1.0.zip",
+              "type": "zip"
+            }
+          }
+        },
+        {
             "type": "package",
             "package": {
               "name": "library/pdf.js",
@@ -260,6 +272,7 @@
         "islandora_lite/termwithuri_condition": "^1.0.0-beta",
         "library/masonry": "3.3.2",
         "library/pdf.js": "2.10.377",
+        "islandora_lite/dgi_fixity": "1.1.0",
         "library/timeline3": "3.8.18",
         "mjordan/islandora_workbench_integration": "dev-main",
         "vlucas/phpdotenv": "^2.4",
