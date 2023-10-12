@@ -360,7 +360,7 @@
               "override_file_access.patch": "https://raw.githubusercontent.com/digitalutsc/override_permission_file_entity/main/override_file_access.patch"
             },
             "drupal/better_social_sharing_buttons": {
-              "custom_link.patch": "https://www.drupal.org/files/issues/2023-10-10/custom_link_4-0-7-0.patch"
+              "custom_link.patch": "https://www.drupal.org/files/issues/2023-10-12/custom_link_4-0-7-1.patch"
             }
         },
         "merge-plugin": {
