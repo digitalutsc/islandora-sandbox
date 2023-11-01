@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7479ea5e757d20500b58e530cf8201d",
+    "content-hash": "8a03b35a9c623f1081193b1cd86307a9",
     "packages": [
         {
             "name": "academicpuma/citeproc-php",
@@ -2852,8 +2852,28 @@
             ],
             "authors": [
                 {
+                    "name": "community-islandora",
+                    "homepage": "https://www.drupal.org/user/3441437"
+                },
+                {
+                    "name": "donrichards",
+                    "homepage": "https://www.drupal.org/user/3519850"
+                },
+                {
+                    "name": "kylehuynh",
+                    "homepage": "https://www.drupal.org/user/3255474"
+                },
+                {
                     "name": "rosiel",
                     "homepage": "https://www.drupal.org/user/3263030"
+                },
+                {
+                    "name": "seth.e.shaw",
+                    "homepage": "https://www.drupal.org/user/50620"
+                },
+                {
+                    "name": "wgillingham",
+                    "homepage": "https://www.drupal.org/user/112955"
                 }
             ],
             "description": "This module creates several blocks to support searching. It also enables the use of Ajax with search blocks, facets, and search results.",
@@ -8864,6 +8884,15 @@
                 "type": "git",
                 "url": "https://github.com/digitalutsc/ableplayer_extend",
                 "reference": "1.0.0-beta1"
+            },
+            "type": "drupal-module"
+        },
+        {
+            "name": "islandora_lite/dgi_fixity",
+            "version": "1.1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/discoverygarden/dgi_fixity/archive/refs/tags/v1.1.0.zip"
             },
             "type": "drupal-module"
         },
@@ -19370,5 +19399,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
