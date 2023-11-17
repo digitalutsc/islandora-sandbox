@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a0ba415b0982ba6f71c9dc7d49e0120",
+    "content-hash": "c57dbedd62639cf9ea824e64dfa0b4a6",
     "packages": [
         {
             "name": "academicpuma/citeproc-php",
@@ -8234,7 +8234,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/digitalutsc/islandora_mirador/archive/refs/tags/1.0.0-beta2.zip"
+                "url": "https://github.com/digitalutsc/islandora_mirador/archive/refs/tags/1.0.0-beta3.zip"
             },
             "type": "drupal-module"
         },
