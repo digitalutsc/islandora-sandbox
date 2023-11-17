@@ -203,7 +203,6 @@
       "drupal/media_thumbnails_pdf": "^2.0@beta",
       "drupal/media_thumbnails_tiff": "^1.0@beta",
       "drupal/media_thumbnails_video": "^2.0",
-      "drupal/bartik": "^1.0",
       "drupal/media_library_edit": "^3.0",
       "drupal/migrate_plus": "^6.0"
    },
