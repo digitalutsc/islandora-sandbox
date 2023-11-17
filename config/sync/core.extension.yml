@@ -89,6 +89,7 @@ module:
   media_library: 0
   media_library_edit: 0
   media_thumbnails: 0
+  media_thumbnails_jp2: 0
   media_thumbnails_pdf: 0
   media_thumbnails_tiff: 0
   media_thumbnails_video: 0

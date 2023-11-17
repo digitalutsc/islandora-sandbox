@@ -1,413 +1,330 @@
 {
-    "name": "islandora/islandora-sandbox",
-    "description": "Project template for Drupal 8 projects with composer",
-    "type": "project",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Islandora Foundation",
-            "role": "Owner",
-            "email": "community@islandora.ca"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "library/pdf.js",
-              "version": "2.10.377",
-              "type": "drupal-library",
-              "dist": {
-                "url": "https://github.com/mozilla/pdf.js/releases/download/v2.10.377/pdfjs-2.10.377-dist.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "library/masonry",
-              "version": "3.3.2",
-              "type": "drupal-library",
-              "dist": {
-                "url": "https://github.com/desandro/masonry/archive/v3.3.2.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/ableplayer_extend",
-              "version": "1.0.0-beta2",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/ableplayer_extend",
-                "type": "git",
-                "reference":"1.0.0-beta2"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/ableplayer_extend/archive/refs/tags/1.0.0-beta2.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/iiif_view_manifest",
-              "version": "1.0.0-beta1",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/iiif_view_manifest",
-                "type": "git",
-                "reference":"1.0.0-beta1"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/iiif_view_manifest/archive/refs/tags/1.0.0-beta1.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-          "type": "package",
-          "package": {
-            "name": "islandora/views_nested_details",
-            "version": "1.1.0",
-            "type": "drupal-module",
-            "source": {
-              "url": "https://github.com/Islandora-Labs/views_nested_details",
-              "type": "git",
-              "reference":"1.1.0"
-            },
+   "name": "islandora/islandora-sandbox",
+   "description": "Project template for Drupal 8 projects with composer",
+   "type": "project",
+   "license": "GPL-2.0-or-later",
+   "authors": [
+      {
+         "name": "Islandora Foundation",
+         "role": "Owner",
+         "email": "community@islandora.ca"
+      }
+   ],
+   "repositories": [
+      {
+         "type": "composer",
+         "url": "https://packages.drupal.org/8"
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "library/pdf.js",
+            "version": "2.10.377",
+            "type": "drupal-library",
             "dist": {
-              "url": "https://github.com/Islandora-Labs/views_nested_details/archive/refs/tags/1.1.0.zip",
-              "type": "zip"
+               "url": "https://github.com/mozilla/pdf.js/releases/download/v2.10.377/pdfjs-2.10.377-dist.zip",
+               "type": "zip"
             }
-          }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "library/timeline3",
-              "version": "3.8.18",
-              "type": "drupal-library",
-              "dist": {
-                "url": "https://github.com/digitalutsc/islandora_lite_installation/raw/main/libs/timeline3.zip",
-                "type": "zip"
-              }
+         }
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "library/masonry",
+            "version": "3.3.2",
+            "type": "drupal-library",
+            "dist": {
+               "url": "https://github.com/desandro/masonry/archive/v3.3.2.zip",
+               "type": "zip"
             }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/islandora_mirador",
-              "version": "1.0.0-beta2",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/islandora_mirador.git",
-                "type": "git",
-                "reference":"1.0.0-beta2"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/islandora_mirador/archive/refs/tags/1.0.0-beta2.zip",
-                "type": "zip"
-              }
+         }
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "library/timeline3",
+            "version": "3.8.18",
+            "type": "drupal-library",
+            "dist": {
+               "url": "https://github.com/digitalutsc/islandora_lite_installation/raw/main/libs/timeline3.zip",
+               "type": "zip"
             }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/facets_year_range",
-              "version": "1.0.0-beta2",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/facets_year_range.git",
-                "type": "git",
-                "reference":"1.0.0-beta2"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/facets_year_range/archive/refs/tags/1.0.0-beta2.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/islandora_breadcrumbs",
-              "version": "1.0.0-beta4",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/islandora_breadcrumbs.git",
-                "type": "git",
-                "reference":"1.0.0-beta4"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/islandora_breadcrumbs/archive/refs/tags/1.0.0-beta4.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-          "type": "package",
-          "package": {
-            "name": "islandora_lite/islandora_search_processor",
+         }
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "islandora_lite/iiif_view_manifest",
             "version": "1.0.0-beta1",
             "type": "drupal-module",
             "source": {
-              "url": "https://github.com/digitalutsc/islandora_search_processor.git",
-              "type": "git",
-              "reference":"1.0.0-beta1"
+               "url": "https://github.com/digitalutsc/iiif_view_manifest",
+               "type": "git",
+               "reference": "1.0.0-beta1"
             },
             "dist": {
-              "url": "https://github.com/digitalutsc/islandora_search_processor/archive/refs/tags/1.0.0-beta1.zip",
-              "type": "zip"
+               "url": "https://github.com/digitalutsc/iiif_view_manifest/archive/refs/tags/1.0.0-beta1.zip",
+               "type": "zip"
             }
-          }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/islandora_object_thumbnail",
-              "version": "1.0.0-beta2",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/islandora_object_thumbnail.git",
-                "type": "git",
-                "reference":"1.0.0-beta2"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/islandora_object_thumbnail/archive/refs/tags/1.0.0-beta2.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/islandora_site_name",
-              "version": "1.0.0-beta2",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/islandora_site_name.git",
-                "type": "git",
-                "reference":"1.0.0-beta2"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/islandora_site_name/archive/refs/tags/1.0.0-beta2.zip",
-                "type": "zip"
-              }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-              "name": "islandora_lite/termwithuri_condition",
-              "version": "1.0.0-beta1",
-              "type": "drupal-module",
-              "source": {
-                "url": "https://github.com/digitalutsc/termwithuri_condition.git",
-                "type": "git",
-                "reference":"1.0.0-beta1"
-              },
-              "dist": {
-                "url": "https://github.com/digitalutsc/termwithuri_condition/archive/refs/tags/1.0.0-beta1.zip",
-                "type": "zip"
-              }
-            }
-        }
-    ],
-    "require": {
-        "php": "^7.4 || ^8",
-        "composer/installers": "^1.9",
-        "cweagans/composer-patches": "^1.9",
-        "drupal/core-composer-scaffold": "^10.1",
-        "drupal/core-recommended": "^10.1",
-        "drupal/csvfile_formatter": "^1.0",
-        "drupal/ableplayer": "^3.0",
-        "drupal/admin_toolbar": "^3.1",
-        "drupal/advancedqueue": "^1.0@RC",
-        "drupal/advancedqueue_runner": "^2.0@alpha",
-        "drupal/archive_list_contents": "^1.0@beta",
-        "drupal/asset_injector": "^2.19",
-        "drupal/better_social_sharing_buttons": "4.0.7",
-        "drupal/citation_select": "^1.0@beta",
-        "drupal/context": "^5@RC",
-        "drupal/devel": "^5.0",
-        "drupal/facets": "^2",
-        "drupal/features": "^3.13",
-        "drupal/field_group": "^3.4",
-        "drupal/field_permissions": "^1.2",
-        "drupal/file_entity": "^2.0@RC",
-        "drupal/filemime": "^1.11",
-        "drupal/filter_perms": "^1.0@alpha",
-        "drupal/fits": "^1.1@alpha",
-        "drupal/flysystem": "^2.1@RC",
-        "drupal/fontawesome": "^2.26",
-        "drupal/geocoder": "^4.9",
-        "drupal/geolocation": "^3.12",
-        "drupal/json_field": "^1.3",
-        "drupal/jwt": "^2.0",
-        "drupal/libraries": "^4.0",
-        "drupal/matomo": "^1.22",
-        "drupal/migrate_source_csv": "^3.5",
-        "drupal/pathauto": "^1.12",
-        "drupal/pdf": "^1.2",
-        "drupal/replaywebpage": "^1.0@beta",
-        "drupal/rest_oai_pmh": "^2.0@beta",
-        "drupal/restui": "^1.21",
-        "drupal/search_api_location": "^1.0@alpha",
-        "drupal/search_api_solr": "^4.3",
-        "drupal/term_condition": "^2.0",
-        "drupal/triplestore_indexer": "^1.5@beta",
-        "drupal/vde_drush": "^2.1",
-        "drupal/views_bulk_edit": "^2.9",
-        "drupal/views_bulk_operations": "^4.2",
-        "drupal/views_data_export": "^1.3",
-        "drupal/views_field_view": "^1.0@beta",
-        "drupal/views_flipped_table": "^2.0",
-        "drupal/views_timelinejs": "^4.0",
-        "drupal/controlled_access_terms": "^2",
-        "drupal/openseadragon": "^2.1",
-        "drush/drush": "^12",
-        "drupal/advanced_search": "^2.0",
-        "islandora/jsonld": "^3.0",
-        "digitalutsc/group_solr": "^1.0.0-beta",
-        "digitalutsc/islandora_group": "^2.0-beta",
-        "digitalutsc/private_files_adapter": "^1.0.0@beta",
-        "islandora/views_nested_details": "^1.0.0-beta",
-        "islandora_lite/ableplayer_extend": "^1.0.0-beta",
-        "islandora_lite/facets_year_range": "^1.0.0-beta",
-        "islandora_lite/iiif_view_manifest": "^1.0.0-beta",
-        "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
-        "islandora_lite/islandora_mirador": "^1.0.0-beta",
-        "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
-        "islandora_lite/islandora_search_processor": "^1.0.0-beta",
-        "islandora_lite/islandora_site_name": "^1.0.0-beta",
-        "islandora_lite/termwithuri_condition": "^1.0.0-beta",
-        "library/masonry": "3.3.2",
-        "library/pdf.js": "2.10.377",
-        "library/timeline3": "3.8.18",
-        "mjordan/islandora_workbench_integration": "dev-main",
-        "vlucas/phpdotenv": "^2.4",
-        "webmozart/path-util": "^2.3",
-        "wikimedia/composer-merge-plugin": "^2.0",
-        "zaporylie/composer-drupal-optimizations": "^1.2",
-        "drupal/media_thumbnails": "^1.0@beta",
-        "drupal/media_thumbnails_jp2": "^1.0@beta",
-        "drupal/media_thumbnails_pdf": "^2.0@beta",
-        "drupal/media_thumbnails_tiff": "^1.0@beta",
-        "drupal/media_thumbnails_video": "^2.0",
-        "drupal/bartik": "^1.0" ,
-        "drupal/media_library_edit": "^3.0",
-        "drupal/migrate_plus": "^6.0"
-    },
-    "require-dev": {
-      "drupal/devel": "^5.0"
-    },
-    "conflict": {
-        "drupal/drupal": "*",
-        "drupal/core": "<=8"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "discard-changes": true,
-          "sort-packages": true,
-          "preferred-install": "dist",
-          "allow-plugins": {
-              "composer/installers": true,
-              "drupal/core-composer-scaffold": true,
-              "drupal/core-project-message": true,
-              "cweagans/composer-patches": true,
-              "oomphinc/composer-installers-extender": true,
-              "drupal/console-extend-plugin": true,
-              "zaporylie/composer-drupal-optimizations": true,
-              "wikimedia/composer-merge-plugin": true,
-              "dealerdirect/phpcodesniffer-composer-installer": true
-            }
-    },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ],
-        "files": ["load.environment.php"]
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "@composer drupal:scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "@composer drupal:scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@patch-files"
-        ],
-        "patch-files": [
-            "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
-        ]
-    },
-    "extra": {
-      "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            },
-            "file-mapping": {
-              "[web-root]/sites/default/settings.php": {
-                  "mode": "append",
-                  "default": "web/core/assets/scaffold/files/default.settings.php",
-                  "append": "assets/patches/default_settings.txt"
-              }
-            }
-        },
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
-        },
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
-        "enable-patching": true,
-        "patches": {
-            "mjordan/islandora_workbench_integration": {
-              "workbench_integration.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/workbench_integration.patch"
-            },
-            "drupal/views_flipped_table": {
-              "accessibility_views_flipped_table_convert_to_layout_table.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/accessibility_views_flipped_table_convert_to_layout_table.patch"
-            },
-            "drupal/ableplayer": {
-              "ableplayer_fixentitydisplayissue.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-sandbox/config_sync_context/assets/patches/ableplayer_fixentitydisplayissue.patch"
-            },
-            "islandora/openseadragon": {
-              "openseadragon.authentication.patch": "https://raw.githubusercontent.com/digitalutsc/private_files_adapter/main/scripts/openseadragon.authentication.patch"
-            },
-            "drupal/file_entity": {
-              "override_file_access.patch": "https://raw.githubusercontent.com/digitalutsc/override_permission_file_entity/main/override_file_access.patch"
-            },
-            "drupal/matomo": {
-                "matomo.patch": "https://raw.githubusercontent.com/digitalutsc/dsu_sites_config/main/all/patches/matomo.patch"
-            }
-        },
-        "merge-plugin": {
-            "include": [
-                "composer_site.json"
-            ]
          }
-    }
-}
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "islandora_lite/islandora_mirador",
+            "version": "1.0.0-beta3",
+            "type": "drupal-module",
+            "source": {
+               "url": "https://github.com/digitalutsc/islandora_mirador.git",
+               "type": "git",
+               "reference": "1.0.0-beta3"
+            },
+            "dist": {
+               "url": "https://github.com/digitalutsc/islandora_mirador/archive/refs/tags/1.0.0-beta2.zip",
+               "type": "zip"
+            }
+         }
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/facets_year_range"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/Islandora-Labs/views_nested_details"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/ableplayer_extend"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/ableplayer_extend"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/islandora_breadcrumbs"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/islandora_search_processor"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/islandora_object_thumbnail"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/islandora_site_name"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/termwithuri_condition"
+      }
+   ],
+   "require": {
+      "php": "^7.4 || ^8",
+      "composer/installers": "^1.9",
+      "cweagans/composer-patches": "^1.9",
+      "drupal/core-composer-scaffold": "^10.1",
+      "drupal/core-recommended": "^10.1",
+      "drupal/csvfile_formatter": "^1.0",
+      "drupal/ableplayer": "^3.0",
+      "drupal/admin_toolbar": "^3.1",
+      "drupal/advancedqueue": "^1.0@RC",
+      "drupal/advancedqueue_runner": "^2.0@alpha",
+      "drupal/archive_list_contents": "^1.0@beta",
+      "drupal/asset_injector": "^2.19",
+      "drupal/better_social_sharing_buttons": "4.0.7",
+      "drupal/citation_select": "^1.0@beta",
+      "drupal/context": "^5@RC",
+      "drupal/devel": "^5.0",
+      "drupal/facets": "^2",
+      "drupal/features": "^3.13",
+      "drupal/field_group": "^3.4",
+      "drupal/field_permissions": "^1.2",
+      "drupal/file_entity": "^2.0@RC",
+      "drupal/filemime": "^1.11",
+      "drupal/filter_perms": "^1.0@alpha",
+      "drupal/fits": "^1.1@alpha",
+      "drupal/flysystem": "^2.1@RC",
+      "drupal/fontawesome": "^2.26",
+      "drupal/geocoder": "^4.9",
+      "drupal/geolocation": "^3.12",
+      "drupal/json_field": "^1.3",
+      "drupal/jwt": "^2.0",
+      "drupal/libraries": "^4.0",
+      "drupal/matomo": "^1.22",
+      "drupal/migrate_source_csv": "^3.5",
+      "drupal/pathauto": "^1.12",
+      "drupal/pdf": "^1.2",
+      "drupal/replaywebpage": "^1.0@beta",
+      "drupal/rest_oai_pmh": "^2.0@beta",
+      "drupal/restui": "^1.21",
+      "drupal/search_api_location": "^1.0@alpha",
+      "drupal/search_api_solr": "^4.3",
+      "drupal/term_condition": "^2.0",
+      "drupal/triplestore_indexer": "^1.5@beta",
+      "drupal/vde_drush": "^2.1",
+      "drupal/views_bulk_edit": "^2.9",
+      "drupal/views_bulk_operations": "^4.2",
+      "drupal/views_data_export": "^1.3",
+      "drupal/views_field_view": "^1.0@beta",
+      "drupal/views_flipped_table": "^2.0",
+      "drupal/views_timelinejs": "^4.0",
+      "drupal/controlled_access_terms": "^2",
+      "drupal/openseadragon": "^2.1",
+      "drush/drush": "^12",
+      "drupal/advanced_search": "^2.0",
+      "islandora/jsonld": "^3.0",
+      "digitalutsc/group_solr": "^1.0.0-beta",
+      "digitalutsc/islandora_group": "^2.0-beta",
+      "digitalutsc/private_files_adapter": "^1.0.0@beta",
+      "islandora/views_nested_details": "^1.0.0-beta",
+      "islandora_lite/ableplayer_extend": "^1.0.0-beta",
+      "islandora_lite/facets_year_range": "^1.0.0-beta",
+      "islandora_lite/iiif_view_manifest": "^1.0.0-beta",
+      "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
+      "islandora_lite/islandora_mirador": "^1.0.0-beta",
+      "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
+      "islandora_lite/islandora_search_processor": "^1.0.0-beta",
+      "islandora_lite/islandora_site_name": "^1.0.0-beta",
+      "islandora_lite/termwithuri_condition": "^1.0.0-beta",
+      "library/masonry": "3.3.2",
+      "library/pdf.js": "2.10.377",
+      "library/timeline3": "3.8.18",
+      "mjordan/islandora_workbench_integration": "dev-main",
+      "vlucas/phpdotenv": "^2.4",
+      "webmozart/path-util": "^2.3",
+      "wikimedia/composer-merge-plugin": "^2.0",
+      "zaporylie/composer-drupal-optimizations": "^1.2",
+      "drupal/media_thumbnails": "^1.0@beta",
+      "drupal/media_thumbnails_jp2": "^1.0@beta",
+      "drupal/media_thumbnails_pdf": "^2.0@beta",
+      "drupal/media_thumbnails_tiff": "^1.0@beta",
+      "drupal/media_thumbnails_video": "^2.0",
+      "drupal/bartik": "^1.0",
+      "drupal/media_library_edit": "^3.0",
+      "drupal/migrate_plus": "^6.0"
+   },
+   "require-dev": {
+      "drupal/devel": "^5.0"
+   },
+   "conflict": {
+      "drupal/drupal": "*",
+      "drupal/core": "<=8"
+   },
+   "minimum-stability": "dev",
+   "prefer-stable": true,
+   "config": {
+      "discard-changes": true,
+      "sort-packages": true,
+      "preferred-install": "dist",
+      "allow-plugins": {
+         "composer/installers": true,
+         "drupal/core-composer-scaffold": true,
+         "drupal/core-project-message": true,
+         "cweagans/composer-patches": true,
+         "oomphinc/composer-installers-extender": true,
+         "drupal/console-extend-plugin": true,
+         "zaporylie/composer-drupal-optimizations": true,
+         "wikimedia/composer-merge-plugin": true,
+         "dealerdirect/phpcodesniffer-composer-installer": true
+      }
+   },
+   "autoload": {
+      "classmap": [
+         "scripts/composer/ScriptHandler.php"
+      ],
+      "files": [
+         "load.environment.php"
+      ]
+   },
+   "scripts": {
+      "pre-install-cmd": [
+         "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      ],
+      "pre-update-cmd": [
+         "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      ],
+      "post-install-cmd": [
+         "@composer drupal:scaffold",
+         "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+      ],
+      "post-update-cmd": [
+         "@composer drupal:scaffold",
+         "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+         "@patch-files"
+      ],
+      "patch-files": [
+         "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
+      ]
+   },
+   "extra": {
+      "drupal-scaffold": {
+         "locations": {
+            "web-root": "web/"
+         },
+         "file-mapping": {
+            "[web-root]/sites/default/settings.php": {
+               "mode": "append",
+               "default": "web/core/assets/scaffold/files/default.settings.php",
+               "append": "assets/patches/default_settings.txt"
+            }
+         }
+      },
+      "installer-paths": {
+         "web/core": [
+            "type:drupal-core"
+         ],
+         "web/libraries/{$name}": [
+            "type:drupal-library"
+         ],
+         "web/modules/contrib/{$name}": [
+            "type:drupal-module"
+         ],
+         "web/profiles/contrib/{$name}": [
+            "type:drupal-profile"
+         ],
+         "web/themes/contrib/{$name}": [
+            "type:drupal-theme"
+         ],
+         "drush/Commands/contrib/{$name}": [
+            "type:drupal-drush"
+         ]
+      },
+      "composer-exit-on-patch-failure": true,
+      "patchLevel": {
+         "drupal/core": "-p2"
+      },
+      "enable-patching": true,
+      "patches": {
+         "mjordan/islandora_workbench_integration": {
+            "workbench_integration.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/workbench_integration.patch"
+         },
+         "drupal/views_flipped_table": {
+            "accessibility_views_flipped_table_convert_to_layout_table.patch": "https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/patches/accessibility_views_flipped_table_convert_to_layout_table.patch"
+         },
+         "drupal/ableplayer": {
+            "ableplayer_fixentitydisplayissue.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-sandbox/config_sync_context/assets/patches/ableplayer_fixentitydisplayissue.patch"
+         },
+         "islandora/openseadragon": {
+            "openseadragon.authentication.patch": "https://raw.githubusercontent.com/digitalutsc/private_files_adapter/main/scripts/openseadragon.authentication.patch"
+         },
+         "drupal/file_entity": {
+            "override_file_access.patch": "https://raw.githubusercontent.com/digitalutsc/override_permission_file_entity/main/override_file_access.patch"
+         },
+         "drupal/matomo": {
+            "matomo.patch": "https://raw.githubusercontent.com/digitalutsc/dsu_sites_config/main/all/patches/matomo.patch"
+         },
+         "drupal/better_social_sharing_buttons":{
+           "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"
+         }        
+      },
+      "merge-plugin": {
+         "include": [
+            "composer_site.json"
+         ]
+      }
+   }
+ }
