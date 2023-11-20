@@ -319,7 +319,7 @@
          "drupal/better_social_sharing_buttons":{
            "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"
          },
-         "vendor/academicpuma/citeproc-php":{
+         "academicpuma/citeproc-php":{
             "citation_select.patch": "assets/patches/citation_select.patch"
           }             
       },
