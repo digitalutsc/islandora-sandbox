@@ -1,0 +1,43 @@
+--- vendor/academicpuma/citeproc-php/src/Layout.php
++++ vendor/academicpuma/citeproc-php/src/Layout_new.php
+@@ -41,9 +41,9 @@
+         foreach ($this->elements as $element) {
+             $parts[] = $element->render($data, $mode);
+         }
+-
+-        $text = implode($this->delimiter, $parts);
+-
++ 
++        $text = implode($this->delimiter ?? '', $parts);
++         
+         if ($mode == 'bibliography' || $mode == 'citation') {
+             return $this->format($text);
+         } else {
+
+--- vendor/academicpuma/citeproc-php/src/RenderingElement.php
++++ vendor/academicpuma/citeproc-php/src/RenderingElement_new.php
+@@ -34,10 +34,9 @@
+         foreach ($this->elements as $element) {
+             $text_parts[] = $element->render($data, $mode);
+         }
+-        $text = implode($delim, $text_parts); // insert the delimiter if supplied.
++        $text = implode($delim ?? '', $text_parts); // insert the delimiter if supplied.
+ 
+         return $this->format($text);
+     }
+ 
+ }
+-
+
+--- vendor/academicpuma/citeproc-php/src/DatePart.php
++++ vendor/academicpuma/citeproc-php/src/DatePart_new.php
+@@ -36,7 +36,7 @@ function render($date, $mode = NULL) {
+                 $text = (isset($date[0])) ? $date[0] : '';
+                 if ($text > 0 && $text < 500) {
+                     $text = $text . $this->citeproc->get_locale('term', 'ad');
+-                } elseif ($text < 0) {
++                } elseif ($text != '' && $text < 0) {
+                     $text = $text * -1;
+                     $text = $text . $this->citeproc->get_locale('term', 'bc');
+                 }
+
