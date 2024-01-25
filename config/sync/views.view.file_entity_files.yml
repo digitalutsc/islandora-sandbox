@@ -435,6 +435,15 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
         created:
           id: created
           table: file_managed
@@ -491,6 +500,15 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
         count:
           id: count
           table: file_usage
@@ -1231,7 +1249,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: true
           summary_options:
             base_path: ''
             count: true

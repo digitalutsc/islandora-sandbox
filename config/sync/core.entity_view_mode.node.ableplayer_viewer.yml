@@ -8,5 +8,6 @@ _core:
   default_config_hash: mIUNzLsXCNTx01c8ouf1KE992RPOb0zuWSbyYBvUeAI
 id: node.ableplayer_viewer
 label: 'AblePlayer Viewer'
+description: ''
 targetEntityType: node
 cache: true

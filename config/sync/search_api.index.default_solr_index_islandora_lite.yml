@@ -115,7 +115,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_description
     type: text
-    boost: !!float 8
+    boost: 8.0
     dependencies:
       config:
         - field.storage.node.field_description
@@ -180,7 +180,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 13
+    boost: 13.0
     dependencies:
       module:
         - node
@@ -267,7 +267,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_linked_agent:entity:name'
     type: text
-    boost: !!float 5
+    boost: 5.0
     dependencies:
       config:
         - field.storage.node.field_linked_agent

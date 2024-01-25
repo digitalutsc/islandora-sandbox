@@ -19,14 +19,6 @@ settings:
   label_display: '0'
   provider: advanced_search
 visibility:
-  context:
-    id: context
-    negate: null
-    values: ''
-  context_all:
-    id: context_all
-    negate: null
-    values: ''
   user_status:
     id: user_status
     negate: false

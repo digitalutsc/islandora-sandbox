@@ -77,14 +77,6 @@ code: |-
 media: all
 preprocess: true
 conditions:
-  context_all:
-    id: context_all
-    negate: null
-    values: ''
-  context:
-    id: context
-    negate: null
-    values: ''
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false

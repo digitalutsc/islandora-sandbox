@@ -23,14 +23,6 @@ settings:
   context_mapping: {  }
   block_id: olivero_advancedsearchgenre
 visibility:
-  context:
-    id: context
-    negate: null
-    values: ''
-  context_all:
-    id: context_all
-    negate: null
-    values: ''
   view_inclusion:
     id: view_inclusion
     negate: false

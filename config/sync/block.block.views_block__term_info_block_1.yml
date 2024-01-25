@@ -24,14 +24,6 @@ settings:
   views_label: ''
   items_per_page: none
 visibility:
-  context_all:
-    id: context_all
-    negate: null
-    values: ''
-  context:
-    id: context
-    negate: null
-    values: ''
   user_status:
     id: user_status
     negate: false

@@ -8,5 +8,6 @@ _core:
   default_config_hash: tUkKqKNGu0ftlqBZ3VIqWeD2s1enPqts5cNjnK9IFqY
 id: node.mirador_viewer
 label: 'Mirador Viewer'
+description: ''
 targetEntityType: node
 cache: true

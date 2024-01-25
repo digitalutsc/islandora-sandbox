@@ -23,10 +23,6 @@ visibility:
     id: context_all
     negate: null
     values: collection
-  context:
-    id: context
-    negate: null
-    values: ''
   user_status:
     id: user_status
     negate: false

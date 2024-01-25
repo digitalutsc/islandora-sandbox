@@ -8,5 +8,6 @@ _core:
   default_config_hash: 48Jz_JvdD121wxsKFnqQaBMo42yZeTiBHfTrO1xA9Uw
 id: node.archive_list_contents_viewer
 label: 'Archive List Contents Viewer'
+description: ''
 targetEntityType: node
 cache: true

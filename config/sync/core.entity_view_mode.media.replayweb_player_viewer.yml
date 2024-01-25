@@ -8,5 +8,6 @@ _core:
   default_config_hash: ARvC3CDLAm0p0tEM-5hJRH-QUF7LNAkHpkv-LnThf6I
 id: media.replayweb_player_viewer
 label: 'ReplayWeb Player Viewer'
+description: ''
 targetEntityType: media
 cache: true

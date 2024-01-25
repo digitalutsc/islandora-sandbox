@@ -1,18 +1,18 @@
 _core:
   default_config_hash: WbM1rpwL-_L1EtbvU53NxrKdW_QRIYgWZ0CiUMFkIKc
-base_url: null
+base_url: 'https://islandora.traefik.me'
 drush_path: /var/www/drupal/vendor/drush/drush/drush
 root_path: /var/www/drupal
 auto-restart-in-cron: 1
 queues:
-  - default
-  - triplestore
-  - fits
-  - ocr_extract_text
+  default: default
+  fits: fits
+  ocr_extract_text: ocr_extract_text
+  triplestore: triplestore
 interval: 5
-started_at: 1684843593
+started_at: 1705959312
 limit-jobs-running: 5
-enforce-limit-jobs-all-queues: null
+enforce-limit-jobs-all-queues: 0
 advancedqueue_runner: null
-runner-pid: null
+runner-pid: 1125
 mode: limit

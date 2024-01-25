@@ -8,5 +8,6 @@ _core:
   default_config_hash: SmYGqLT2_hvMIt7-u9qVtar9NWLRTJlKAGYkF2KCzrc
 id: media.archive_list_contents_viewer
 label: 'Archive List Contents Viewer'
+description: ''
 targetEntityType: media
 cache: true

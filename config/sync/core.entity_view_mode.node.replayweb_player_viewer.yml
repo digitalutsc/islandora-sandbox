@@ -8,5 +8,6 @@ _core:
   default_config_hash: AtDfmqWUNxNju3uVIuP5cGO0ZmmbD0R6h8H3Slz1xww
 id: node.replayweb_player_viewer
 label: 'ReplayWeb Player Viewer'
+description: ''
 targetEntityType: node
 cache: true

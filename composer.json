@@ -120,6 +120,10 @@
       {
          "type": "vcs",
          "url": "https://github.com/digitalutsc/termwithuri_condition"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/browse_by_taxonomy"
       }
    ],
    "require": {
@@ -179,6 +183,7 @@
       "islandora/jsonld": "^3.0",
       "digitalutsc/group_solr": "^1.0.0-beta",
       "digitalutsc/islandora_group": "^2.0-beta",
+      "digitalutsc/browse_by_taxonomy": "dev-main",
       "digitalutsc/private_files_adapter": "^1.0.0@beta",
       "islandora/views_nested_details": "^1.0.0-beta",
       "islandora_lite/ableplayer_extend": "^1.0.0-beta",
@@ -312,9 +317,6 @@
          },
          "drupal/file_entity": {
             "override_file_access.patch": "https://raw.githubusercontent.com/digitalutsc/override_permission_file_entity/main/override_file_access.patch"
-         },
-         "drupal/matomo": {
-            "matomo.patch": "https://raw.githubusercontent.com/digitalutsc/dsu_sites_config/main/all/patches/matomo.patch"
          },
          "drupal/better_social_sharing_buttons":{
            "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"

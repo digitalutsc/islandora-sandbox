@@ -8,5 +8,6 @@ _core:
   default_config_hash: 8TqF5cqNCF6w4H4Eu9cZ-eI-W1M4Jv8hH8chZQOsY3s
 id: media.able_player_caption_view_mode
 label: 'Able Player Caption View Mode'
+description: ''
 targetEntityType: media
 cache: true
