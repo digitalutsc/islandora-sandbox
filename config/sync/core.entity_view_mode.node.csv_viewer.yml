@@ -8,6 +8,5 @@ _core:
   default_config_hash: l1R9LFzeDL7r-PILZV1mZ41kzItXtwPSqmam8kBz_7Y
 id: node.csv_viewer
 label: 'CSV Viewer'
-description: ''
 targetEntityType: node
 cache: true

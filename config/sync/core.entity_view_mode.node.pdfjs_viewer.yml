@@ -9,6 +9,5 @@ _core:
   default_config_hash: rU7EYaMqFt_SpSYQuACg9z3spiHhB8Vg0I7Dd7-SbyI
 id: node.pdfjs_viewer
 label: 'PDFjs Viewer'
-description: ''
 targetEntityType: node
 cache: true

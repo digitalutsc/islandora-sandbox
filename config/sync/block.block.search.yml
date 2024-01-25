@@ -26,6 +26,14 @@ settings:
   search_method: dismax
   block_id: search
 visibility:
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
+  context:
+    id: context
+    negate: null
+    values: ''
   user_status:
     id: user_status
     negate: false

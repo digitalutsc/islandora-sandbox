@@ -19,6 +19,14 @@ code: |-
 media: all
 preprocess: true
 conditions:
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
+  context:
+    id: context
+    negate: null
+    values: ''
   view_inclusion:
     id: view_inclusion
     negate: false

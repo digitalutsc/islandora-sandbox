@@ -32,6 +32,14 @@ noscriptRegion: {  }
 jquery: true
 header: false
 preprocess: true
-conditions: {  }
+conditions:
+  context:
+    id: context
+    negate: null
+    values: ''
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
 contexts: {  }
 conditions_require_all: true

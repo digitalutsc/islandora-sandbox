@@ -73,9 +73,9 @@ default_options:
     flickMinSpeed: 120
     flickMomentum: 0.25
     pinchRotate: false
-  zoomPerClick: 2.0
+  zoomPerClick: !!float 2
   zoomPerScroll: 1.2
-  zoomPerSecond: 1.0
+  zoomPerSecond: !!float 1
   showNavigator: false
   navigatorPosition: TOP_RIGHT
   navigatorSizeRatio: 0.2

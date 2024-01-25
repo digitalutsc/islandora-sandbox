@@ -9,6 +9,5 @@ _core:
   default_config_hash: zmAcpMG00WW468iB3amzl9f7Wk_AUaUgJUvt65Je-G4
 id: node.openseadragon_viewer
 label: 'OpenSeadragon Viewer'
-description: ''
 targetEntityType: node
 cache: true

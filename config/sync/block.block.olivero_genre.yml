@@ -28,6 +28,10 @@ visibility:
     negate: false
     view_inclusion:
       view-collection-page_1: view-collection-page_1
+  context:
+    id: context
+    negate: null
+    values: ''
   user_status:
     id: user_status
     negate: false
@@ -39,3 +43,7 @@ visibility:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  context_all:
+    id: context_all
+    negate: null
+    values: ''

@@ -11,3 +11,6 @@ processor: daemon
 processing_time: 90
 locked: false
 threshold: {  }
+type: 2
+limit: 7
+state: success

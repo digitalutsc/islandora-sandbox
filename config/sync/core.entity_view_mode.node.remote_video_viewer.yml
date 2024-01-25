@@ -8,6 +8,5 @@ _core:
   default_config_hash: vbBvbSULb7aASwYe8sCXlGxKENnmNScJqWf1BWZ1AQg
 id: node.remote_video_viewer
 label: 'Remote Video Viewer'
-description: ''
 targetEntityType: node
 cache: true

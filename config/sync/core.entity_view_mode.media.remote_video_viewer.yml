@@ -8,6 +8,5 @@ _core:
   default_config_hash: KdobotbIt5CMJ8E2XST153cqdLgr8BOQW_28bkMXkDg
 id: media.remote_video_viewer
 label: 'Remote Video Viewer'
-description: ''
 targetEntityType: media
 cache: true

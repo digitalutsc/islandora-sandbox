@@ -37,14 +37,21 @@ visibility:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  context:
+    id: context
+    negate: null
+    values: ''
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
   term:
     id: term
-    negate: false
-    context_mapping: {  }
-    term_uuids: {  }
     tid:
       -
         target_id: '19'
+    negate: false
+    context_mapping: {  }
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false

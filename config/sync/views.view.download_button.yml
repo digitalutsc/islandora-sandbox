@@ -88,7 +88,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -152,7 +152,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -216,7 +216,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -280,7 +280,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -344,7 +344,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -463,6 +463,7 @@ display:
           title: ''
           default_argument_type: node
           default_argument_options: {  }
+          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -588,7 +589,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -652,7 +653,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -716,7 +717,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -780,7 +781,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }
@@ -844,7 +845,7 @@ display:
           click_sort_column: target_id
           type: file_download_link
           settings:
-            access_message: "You don't have access to download this file."
+            access_message: 'You don''t have access to download this file.'
             text: Download
           group_column: ''
           group_columns: {  }

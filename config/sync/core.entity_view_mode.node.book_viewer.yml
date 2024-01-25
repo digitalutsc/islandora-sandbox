@@ -8,6 +8,5 @@ _core:
   default_config_hash: hXVo-plT_P7uaAJ4vDD43kRJ4BBgK4q2EoAsbJ722P4
 id: node.book_viewer
 label: 'Book Viewer'
-description: ''
 targetEntityType: node
 cache: true

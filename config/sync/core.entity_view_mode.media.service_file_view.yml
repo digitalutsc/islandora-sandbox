@@ -8,6 +8,5 @@ _core:
   default_config_hash: 9KnWJ6Ui6ILVraunH2ynU3H0fNKpOAFMV0cEc4gC708
 id: media.service_file_view
 label: 'Service File View'
-description: ''
 targetEntityType: media
 cache: true

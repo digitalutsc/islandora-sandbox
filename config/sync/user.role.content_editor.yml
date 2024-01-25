@@ -11,7 +11,6 @@ dependencies:
     - contextual
     - file
     - file_entity
-    - help
     - node
     - path
     - system
@@ -29,7 +28,6 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
-  - 'access help pages'
   - 'access toolbar'
   - 'access tour'
   - 'administer url aliases'

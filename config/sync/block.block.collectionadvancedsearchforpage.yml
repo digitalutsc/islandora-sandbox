@@ -24,6 +24,10 @@ settings:
     - genre
   context_filter: null
 visibility:
+  context:
+    id: context
+    negate: null
+    values: ''
   user_status:
     id: user_status
     negate: false
@@ -35,6 +39,10 @@ visibility:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
   view_inclusion:
     id: view_inclusion
     negate: false
