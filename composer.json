@@ -120,6 +120,10 @@
       {
          "type": "vcs",
          "url": "https://github.com/digitalutsc/termwithuri_condition"
+      },
+      {
+         "type": "vcs",
+         "url": "https://github.com/digitalutsc/browse_by_taxonomy"
       }
    ],
    "require": {
@@ -180,6 +184,7 @@
       "digitalutsc/group_solr": "^1.0.0-beta",
       "digitalutsc/islandora_group": "^2.0-beta",
       "digitalutsc/private_files_adapter": "^1.0.0@beta",
+      "digitalutsc/browse_by_taxonomy": "dev-main",
       "islandora/views_nested_details": "^1.0.0-beta",
       "islandora_lite/ableplayer_extend": "^1.0.0-beta",
       "islandora_lite/facets_year_range": "^1.0.0-beta",
