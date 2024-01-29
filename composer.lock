@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a77780539cdfbfab06bde2b0b708fd6e",
+    "content-hash": "0e890220e0540d2b624c798a772796cc",
     "packages": [
         {
             "name": "academicpuma/citeproc-php",
@@ -1388,6 +1388,32 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
             },
             "time": "2022-10-27T11:44:00+00:00"
+        },
+        {
+            "name": "digitalutsc/browse_by_taxonomy",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digitalutsc/browse_by_taxonomy.git",
+                "reference": "94c802964a6a10ded93c35d20bb48636a52f428e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digitalutsc/browse_by_taxonomy/zipball/94c802964a6a10ded93c35d20bb48636a52f428e",
+                "reference": "94c802964a6a10ded93c35d20bb48636a52f428e",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds views to browse by subject or person",
+            "support": {
+                "source": "https://github.com/digitalutsc/browse_by_taxonomy/tree/main",
+                "issues": "https://github.com/digitalutsc/browse_by_taxonomy/issues"
+            },
+            "time": "2023-11-10T17:20:31+00:00"
         },
         {
             "name": "digitalutsc/group_solr",
@@ -14469,6 +14495,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "digitalutsc/browse_by_taxonomy": 20,
+        "digitalutsc/private_files_adapter": 10,
         "drupal/advancedqueue": 5,
         "drupal/advancedqueue_runner": 15,
         "drupal/archive_list_contents": 10,
@@ -14478,17 +14506,16 @@
         "drupal/filter_perms": 15,
         "drupal/fits": 15,
         "drupal/flysystem": 5,
+        "drupal/media_thumbnails": 10,
+        "drupal/media_thumbnails_jp2": 10,
+        "drupal/media_thumbnails_pdf": 10,
+        "drupal/media_thumbnails_tiff": 10,
         "drupal/replaywebpage": 10,
         "drupal/rest_oai_pmh": 10,
         "drupal/search_api_location": 15,
         "drupal/triplestore_indexer": 10,
         "drupal/views_field_view": 10,
-        "digitalutsc/private_files_adapter": 10,
-        "mjordan/islandora_workbench_integration": 20,
-        "drupal/media_thumbnails": 10,
-        "drupal/media_thumbnails_jp2": 10,
-        "drupal/media_thumbnails_pdf": 10,
-        "drupal/media_thumbnails_tiff": 10
+        "mjordan/islandora_workbench_integration": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -14496,5 +14523,5 @@
         "php": "^7.4 || ^8"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
