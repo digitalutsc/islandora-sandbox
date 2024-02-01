@@ -141,7 +141,6 @@
       "drupal/context": "^5@RC",
       "drupal/devel": "^5.0",
       "drupal/facets": "^2",
-      "drupal/features": "^3.13",
       "drupal/field_group": "^3.4",
       "drupal/field_permissions": "^1.2",
       "drupal/file_entity": "^2.0@RC",
