@@ -266,8 +266,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{{ field_edtf_date_created|split(' to ')[0] }}"
             make_link: false
             path: ''
             absolute: false
@@ -319,7 +319,7 @@ display:
               - admin_label
             custom_label: 0
             label: ''
-            element_label_colon: 1
+            element_label_colon: 0
             exclude: 0
             element_type_enable: 0
             element_type: ''
@@ -444,24 +444,148 @@ display:
           view: item_media
           display: default
           arguments: '{{ raw_fields.nid }}'
+        field_edtf_date_created_1:
+          id: field_edtf_date_created_1
+          table: search_api_datasource_default_solr_index_islandora_lite_entity_node
+          field: field_edtf_date_created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ field_edtf_date_created_1|split(' to ')[1] }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: edtf_default
+          settings:
+            date_separator: dash
+            date_order: big_endian
+            month_format: mm
+            day_format: dd
+            year_format: 'y'
+            relationship: none
+            field_rendering: 1
+            fieldsets:
+              - more
+              - admin_label
+            custom_label: 0
+            label: ''
+            element_label_colon: 0
+            exclude: 0
+            element_type_enable: 0
+            element_type: ''
+            element_class_enable: 0
+            element_class: ''
+            element_label_type_enable: 0
+            element_label_type: ''
+            element_label_class_enable: 0
+            element_label_class: ''
+            element_wrapper_type_enable: 0
+            element_wrapper_type: ''
+            element_wrapper_class_enable: 0
+            element_wrapper_class: ''
+            element_default_classes: 1
+            alter:
+              alter_text: 0
+              text: ''
+              make_link: 0
+              path: ''
+              absolute: 0
+              replace_spaces: 0
+              external: 0
+              path_case: none
+              link_class: ''
+              alt: ''
+              rel: ''
+              prefix: ''
+              suffix: ''
+              target: ''
+              trim: 0
+              max_length: '0'
+              word_boundary: 1
+              ellipsis: 1
+              more_link: 0
+              more_link_text: ''
+              more_link_path: ''
+              html: 0
+              strip_tags: 0
+              preserve_tags: ''
+              trim_whitespace: 0
+              nl2br: 0
+            empty: ''
+            empty_zero: 0
+            hide_empty: 0
+            hide_alter_empty: 1
+            group_rows: 1
+            multi_type: separator
+            separator: ', '
+            delta_limit: '0'
+            delta_offset: '0'
+            delta_reversed: 0
+            delta_first_last: 0
+            click_sort_column: value
+            type: edtf_default
+            field_api_classes: 0
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
       pager:
-        type: mini
+        type: none
         options:
           offset: 0
-          items_per_page: 10
-          total_pages: null
-          id: 0
-          tags:
-            next: ››
-            previous: ‹‹
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -605,6 +729,50 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        edtf_year:
+          id: edtf_year
+          table: search_api_index_default_solr_index_islandora_lite
+          field: edtf_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_numeric
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: timelinejs
         options:
@@ -613,7 +781,7 @@ display:
             height: 40em
             hash_bookmark: false
             start_at_end: false
-            scale_factor: !!float 2
+            scale_factor: 2.0
             language: ''
             font: default
             timenav_position: bottom
@@ -624,12 +792,12 @@ display:
           additional_config:
             start_at_current: false
           timeline_fields:
-            caption: media_file_alt_text
+            caption: ''
             credit: ''
             media: view
             group: ''
             start_date: field_edtf_date_created
-            end_date: ''
+            end_date: field_edtf_date_created_1
             display_date: ''
             text: field_description
             headline: title
@@ -678,12 +846,12 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
       tags:
         - 'config:field.storage.node.field_description'
         - 'config:field.storage.node.field_edtf_date_created'
         - 'config:search_api.index.default_solr_index_islandora_lite'
+        - 'search_api_list:default_solr_index_islandora_lite'
   block_1:
     id: block_1
     display_title: Block
@@ -697,7 +865,18 @@ display:
           items_per_page: 5
       defaults:
         pager: false
-      display_extenders: {  }
+      display_extenders:
+        matomo:
+          enabled: false
+          keyword_gets: ''
+          keyword_behavior: first
+          keyword_concat_separator: ' '
+          category_behavior: none
+          category_gets: ''
+          category_concat_separator: ' '
+          category_fallback: ''
+          category_facets: {  }
+          category_facets_concat_separator: ', '
     cache_metadata:
       max-age: -1
       contexts:
@@ -709,6 +888,7 @@ display:
         - 'config:field.storage.node.field_description'
         - 'config:field.storage.node.field_edtf_date_created'
         - 'config:search_api.index.default_solr_index_islandora_lite'
+        - 'search_api_list:default_solr_index_islandora_lite'
   page_1:
     id: page_1
     display_title: Page
@@ -952,8 +1132,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{{ field_edtf_date_created|split(' to ')[0] }}"
             make_link: false
             path: ''
             absolute: false
@@ -1005,7 +1185,7 @@ display:
               - admin_label
             custom_label: 0
             label: ''
-            element_label_colon: 1
+            element_label_colon: 0
             exclude: 0
             element_type_enable: 0
             element_type: ''
@@ -1021,8 +1201,8 @@ display:
             element_wrapper_class: ''
             element_default_classes: 1
             alter:
-              alter_text: 0
-              text: ''
+              alter_text: 1
+              text: '{{ field_edtf_date_created[:4] }}'
               make_link: 0
               path: ''
               absolute: 0
@@ -1183,6 +1363,144 @@ display:
           use_highlighting: false
           multi_type: separator
           multi_separator: ', '
+        field_edtf_date_created_1:
+          id: field_edtf_date_created_1
+          table: search_api_datasource_default_solr_index_islandora_lite_entity_node
+          field: field_edtf_date_created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ field_edtf_date_created_1|split(' to ')[1] }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: edtf_default
+          settings:
+            date_separator: dash
+            date_order: big_endian
+            month_format: mm
+            day_format: dd
+            year_format: 'y'
+            relationship: none
+            field_rendering: 1
+            fieldsets:
+              - more
+              - admin_label
+            custom_label: 0
+            label: ''
+            element_label_colon: 0
+            exclude: 0
+            element_type_enable: 0
+            element_type: ''
+            element_class_enable: 0
+            element_class: ''
+            element_label_type_enable: 0
+            element_label_type: ''
+            element_label_class_enable: 0
+            element_label_class: ''
+            element_wrapper_type_enable: 0
+            element_wrapper_type: ''
+            element_wrapper_class_enable: 0
+            element_wrapper_class: ''
+            element_default_classes: 1
+            alter:
+              alter_text: 1
+              text: "{% if 1 in field_edtf_date_created_1|split(' to ')|keys %}\r\n{{ field_edtf_date_created_1|split(' to ')[1] }}\r\n{% else %}\r\n{{ field_edtf_date_created_1|split(' to ')[0] }}\r\n{% endif %}"
+              make_link: 0
+              path: ''
+              absolute: 0
+              replace_spaces: 0
+              external: 0
+              path_case: none
+              link_class: ''
+              alt: ''
+              rel: ''
+              prefix: ''
+              suffix: ''
+              target: ''
+              trim: 0
+              max_length: '0'
+              word_boundary: 1
+              ellipsis: 1
+              more_link: 0
+              more_link_text: ''
+              more_link_path: ''
+              html: 0
+              strip_tags: 0
+              preserve_tags: ''
+              trim_whitespace: 0
+              nl2br: 0
+            empty: ''
+            empty_zero: 0
+            hide_empty: 0
+            hide_alter_empty: 1
+            group_rows: 1
+            multi_type: separator
+            separator: ', '
+            delta_limit: '0'
+            delta_offset: '0'
+            delta_reversed: 0
+            delta_first_last: 0
+            click_sort_column: value
+            type: edtf_default
+            field_api_classes: 0
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
       cache:
         type: none
       defaults:
@@ -1207,9 +1525,9 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
       tags:
         - 'config:field.storage.node.field_description'
         - 'config:field.storage.node.field_edtf_date_created'
         - 'config:search_api.index.default_solr_index_islandora_lite'
+        - 'search_api_list:default_solr_index_islandora_lite'
