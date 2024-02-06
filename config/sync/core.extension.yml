@@ -17,7 +17,6 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  browse_by_taxonomy: 0
   citation_select: 0
   ckeditor5: 0
   comment: 0
@@ -39,7 +38,6 @@ module:
   facets: 0
   facets_summary: 0
   facets_year_range: 0
-  features: 0
   field: 0
   field_group: 0
   field_permissions: 0
@@ -51,8 +49,6 @@ module:
   fits: 0
   flexible_permissions: 0
   fontawesome: 0
-  geocoder: 0
-  geocoder_field: 0
   geolocation: 0
   geolocation_leaflet: 0
   geolocation_search_api: 0
