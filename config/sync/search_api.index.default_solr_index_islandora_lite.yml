@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_coordinates
+    - field.storage.node.field_edtf_date_created
     - field.storage.node.field_description
     - field.storage.node.field_genre
     - field.storage.node.field_geographic_subject
@@ -23,7 +24,6 @@ dependencies:
     - field.storage.node.field_temporal_subject
     - field.storage.node.field_weight
     - field.storage.node.field_edtf_date
-    - field.storage.node.field_edtf_date_created
     - field.storage.node.field_edtf_date_issued
     - search_api.server.default_solr_server
     - core.entity_view_mode.node.search_index
@@ -115,7 +115,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_description
     type: text
-    boost: !!float 8
+    boost: 8.0
     dependencies:
       config:
         - field.storage.node.field_description
@@ -132,6 +132,14 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_edtf_date_created
     type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_edtf_date_created
+  field_edtf_date_created_1:
+    label: 'Date Created'
+    datasource_id: 'entity:node'
+    property_path: field_edtf_date_created
+    type: string
     dependencies:
       config:
         - field.storage.node.field_edtf_date_created
@@ -180,7 +188,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 13
+    boost: 13.0
     dependencies:
       module:
         - node
@@ -267,7 +275,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_linked_agent:entity:name'
     type: text
-    boost: !!float 5
+    boost: 5.0
     dependencies:
       config:
         - field.storage.node.field_linked_agent
@@ -469,6 +477,7 @@ processor_settings:
     weights:
       preprocess_index: -6
       preprocess_query: -4
+  custom_value: {  }
   edtf_year_only:
     fields:
       islandora_object|field_edtf_date: islandora_object|field_edtf_date
