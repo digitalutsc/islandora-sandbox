@@ -49,6 +49,7 @@ module:
   fits: 0
   flexible_permissions: 0
   fontawesome: 0
+  fullcalendar_solr: 0
   geolocation: 0
   geolocation_leaflet: 0
   geolocation_search_api: 0
