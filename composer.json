@@ -175,6 +175,7 @@
       "drupal/restui": "^1.21",
       "drupal/search_api_location": "^1.0@alpha",
       "drupal/search_api_solr": "^4.3",
+      "drupal/taxonomy_manager": "^2.0",
       "drupal/term_condition": "^2.0",
       "drupal/triplestore_indexer": "^1.5@beta",
       "drupal/vde_drush": "^2.1",
