@@ -120,6 +120,7 @@ module:
   syslog: 0
   system: 0
   taxonomy: 0
+  taxonomy_manager: 0
   term_condition: 0
   termwithuri_condition: 0
   text: 0
