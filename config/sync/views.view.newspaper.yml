@@ -9,8 +9,6 @@ dependencies:
     - node
     - user
     - views_nested_details
-_core:
-  default_config_hash: 9Ol9o0-qZLB_68qyAwHdJnJUTmbF0PZW0o3o7qqnrV8
 id: newspaper
 label: newspaper
 module: views
@@ -546,15 +544,17 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
-          items_per_page: 10
+          items_per_page: 100
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -563,6 +563,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       exposed_form:
         type: basic
         options:
