@@ -55,7 +55,6 @@ module:
   geolocation_search_api: 0
   gnode: 0
   group: 0
-  group_permissions: 0
   group_solr: 0
   groupmedia: 0
   hal: 0
