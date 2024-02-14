@@ -1335,21 +1335,20 @@
         },
         {
             "name": "digitalutsc/group_solr",
-            "version": "1.0.0-beta1",
+            "version": "1.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/group_solr.git",
-                "reference": "49f0259ce1144c8a7ba9fe449c67dc281d338edf"
+                "reference": "a9e64f91418c1e76a97ba2c6fc74fe7a32c5f58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/group_solr/zipball/49f0259ce1144c8a7ba9fe449c67dc281d338edf",
-                "reference": "49f0259ce1144c8a7ba9fe449c67dc281d338edf",
+                "url": "https://api.github.com/repos/digitalutsc/group_solr/zipball/a9e64f91418c1e76a97ba2c6fc74fe7a32c5f58f",
+                "reference": "a9e64f91418c1e76a97ba2c6fc74fe7a32c5f58f",
                 "shasum": ""
             },
             "require": {
                 "drupal/group": "^3.0",
-                "drupal/group_permissions": "^2.0@alpha",
                 "drupal/groupmedia": "^4.0@alpha",
                 "drupal/search_api_solr": "^4.2"
             },
@@ -1376,25 +1375,24 @@
                 "issues": "https://github.com/digitalutsc/group_solr/issues",
                 "source": "https://github.com/digitalutsc/group_solr"
             },
-            "time": "2023-05-10T13:25:58+00:00"
+            "time": "2024-02-14T01:44:23+00:00"
         },
         {
             "name": "digitalutsc/islandora_group",
-            "version": "2.0-beta2",
+            "version": "2.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_group.git",
-                "reference": "bd6b63083413a5503034924bdf8fa51004a41341"
+                "reference": "78764ceafe6547676bcc757a74023f0aca46de62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/islandora_group/zipball/bd6b63083413a5503034924bdf8fa51004a41341",
-                "reference": "bd6b63083413a5503034924bdf8fa51004a41341",
+                "url": "https://api.github.com/repos/digitalutsc/islandora_group/zipball/78764ceafe6547676bcc757a74023f0aca46de62",
+                "reference": "78764ceafe6547676bcc757a74023f0aca46de62",
                 "shasum": ""
             },
             "require": {
                 "drupal/group": "^3.1",
-                "drupal/group_permissions": "^2.0@alpha",
                 "drupal/groupmedia": "^4.0@alpha"
             },
             "type": "drupal-module",
@@ -1420,25 +1418,24 @@
                 "issues": "https://www.drupal.org/project/issues/islandora_group",
                 "source": "http://cgit.drupalcode.org/islandora_group"
             },
-            "time": "2023-10-30T14:34:20+00:00"
+            "time": "2024-02-14T01:43:21+00:00"
         },
         {
             "name": "digitalutsc/private_files_adapter",
-            "version": "1.0.0-beta4",
+            "version": "1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/private_files_adapter.git",
-                "reference": "35e1cd0b75f9ce2ce7b5f6100af09176142b23cf"
+                "reference": "94532f79747dc4e79bd5f4243fac70a91a434a99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/private_files_adapter/zipball/35e1cd0b75f9ce2ce7b5f6100af09176142b23cf",
-                "reference": "35e1cd0b75f9ce2ce7b5f6100af09176142b23cf",
+                "url": "https://api.github.com/repos/digitalutsc/private_files_adapter/zipball/94532f79747dc4e79bd5f4243fac70a91a434a99",
+                "reference": "94532f79747dc4e79bd5f4243fac70a91a434a99",
                 "shasum": ""
             },
             "require": {
                 "drupal/group": "^3.0",
-                "drupal/group_permissions": "^2.0@alpha",
                 "drupal/groupmedia": "^4.0@alpha",
                 "drupal/jwt": "^2.0"
             },
