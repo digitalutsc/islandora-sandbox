@@ -12,15 +12,4 @@ admin: false
 scope: outsider
 global_role: authenticated
 group_type: private
-permissions:
-  - 'view group_media:able_player_caption entity'
-  - 'view group_media:audio entity'
-  - 'view group_media:document entity'
-  - 'view group_media:file entity'
-  - 'view group_media:image entity'
-  - 'view group_media:remote_video entity'
-  - 'view group_media:video entity'
-  - 'view group_media:web_archive entity'
-  - 'view group_node:article entity'
-  - 'view group_node:islandora_object entity'
-  - 'view group_node:page entity'
+permissions: {  }
