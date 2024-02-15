@@ -7961,16 +7961,16 @@
         },
         {
             "name": "islandora_lite/islandora_breadcrumbs",
-            "version": "1.0.0-beta6",
+            "version": "1.0.0-beta7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_breadcrumbs.git",
-                "reference": "bb50553b941d1561b7e557d9f7b44f6e8cebc128"
+                "reference": "a552f0e0961133748c30f592a90c8d05e78f2226"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/islandora_breadcrumbs/zipball/bb50553b941d1561b7e557d9f7b44f6e8cebc128",
-                "reference": "bb50553b941d1561b7e557d9f7b44f6e8cebc128",
+                "url": "https://api.github.com/repos/digitalutsc/islandora_breadcrumbs/zipball/a552f0e0961133748c30f592a90c8d05e78f2226",
+                "reference": "a552f0e0961133748c30f592a90c8d05e78f2226",
                 "shasum": ""
             },
             "type": "drupal-module",
