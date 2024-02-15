@@ -105,6 +105,7 @@ module:
   pdf: 0
   private_files_adapter: 0
   rdf: 0
+  redirect: 0
   replaywebpage: 0
   responsive_image: 0
   rest: 0
