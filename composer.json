@@ -170,6 +170,7 @@
       "drupal/openseadragon": "^2.1",
       "drupal/pathauto": "^1.12",
       "drupal/pdf": "^1.2",
+      "drupal/redirect": "^1.9",
       "drupal/replaywebpage": "^1.0@beta",
       "drupal/rest_oai_pmh": "^2.0@beta",
       "drupal/restui": "^1.21",
