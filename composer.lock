@@ -6346,17 +6346,17 @@
         },
         {
             "name": "drupal/triplestore_indexer",
-            "version": "1.5.0-beta10",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/triplestore_indexer.git",
-                "reference": "8.x-1.5-beta10"
+                "reference": "2.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/triplestore_indexer-8.x-1.5-beta10.zip",
-                "reference": "8.x-1.5-beta10",
-                "shasum": "2c2db58383da732f0765f5db393c15339c47efef"
+                "url": "https://ftp.drupal.org/files/projects/triplestore_indexer-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "40d3c4b100018caeffb5ab794401fc71f8087fd8"
             },
             "require": {
                 "drupal/advancedqueue": "^1.0@RC",

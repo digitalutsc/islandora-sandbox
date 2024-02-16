@@ -177,7 +177,7 @@
       "drupal/search_api_solr": "^4.3",
       "drupal/taxonomy_manager": "^2.0",
       "drupal/term_condition": "^2.0",
-      "drupal/triplestore_indexer": "^1.5@beta",
+      "drupal/triplestore_indexer": "^2.0",
       "drupal/vde_drush": "^2.1",
       "drupal/views_bulk_edit": "^2.9",
       "drupal/views_bulk_operations": "^4.2",
