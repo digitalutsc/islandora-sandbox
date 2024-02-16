@@ -7961,16 +7961,16 @@
         },
         {
             "name": "islandora_lite/islandora_breadcrumbs",
-            "version": "1.0.0-beta7",
+            "version": "1.0.0-beta8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_breadcrumbs.git",
-                "reference": "a552f0e0961133748c30f592a90c8d05e78f2226"
+                "reference": "4f1584c52c2a08ac4165076a28eae0a9cfb26124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/islandora_breadcrumbs/zipball/a552f0e0961133748c30f592a90c8d05e78f2226",
-                "reference": "a552f0e0961133748c30f592a90c8d05e78f2226",
+                "url": "https://api.github.com/repos/digitalutsc/islandora_breadcrumbs/zipball/4f1584c52c2a08ac4165076a28eae0a9cfb26124",
+                "reference": "4f1584c52c2a08ac4165076a28eae0a9cfb26124",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -7979,10 +7979,10 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/digitalutsc/islandora_breadcrumbs/tree/1.0.0-beta6",
+                "source": "https://github.com/digitalutsc/islandora_breadcrumbs/tree/1.0.0-beta8",
                 "issues": "https://github.com/digitalutsc/islandora_breadcrumbs/issues"
             },
-            "time": "2024-01-19T17:29:16+00:00"
+            "time": "2024-02-16T20:57:43+00:00"
         },
         {
             "name": "islandora_lite/islandora_mirador",
