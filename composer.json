@@ -321,7 +321,7 @@
            "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"
          },
          "academicpuma/citeproc-php":{
-            "citation_select.patch": "assets/patches/citation_select.patch"
+            "citation_select.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/2.x/assets/patches/citation_select.patch"
           }             
       },
       "merge-plugin": {
