@@ -1,0 +1,13 @@
+uuid: 00a1e556-2778-4343-94ae-612c654f503e
+langcode: en
+status: true
+dependencies:
+  module:
+    - triplestore_indexer
+_core:
+  default_config_hash: X-5ZG84fRkIhcEooE03HntoADZv92ihZLRgjOUrb21s
+id: index_media_to_triplestore_advancedqueue
+label: 'Index media to Triplestore (via Advanced Queue)'
+type: media
+plugin: index_media_to_triplestore_advancedqueue
+configuration: {  }

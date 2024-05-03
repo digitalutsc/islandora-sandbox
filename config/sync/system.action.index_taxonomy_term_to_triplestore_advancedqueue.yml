@@ -1,0 +1,13 @@
+uuid: 88181d54-f70d-433b-a00c-4f5c74ddef9b
+langcode: en
+status: true
+dependencies:
+  module:
+    - triplestore_indexer
+_core:
+  default_config_hash: H82xUUhHkSkv_6EnceTcHGiF11S4Sg27zUP2hrXx5aw
+id: index_taxonomy_term_to_triplestore_advancedqueue
+label: 'Index taxonomy term to Triplestore (via Advanced Queue)'
+type: taxonomy_term
+plugin: index_taxonomy_term_to_triplestore_advancedqueue
+configuration: {  }

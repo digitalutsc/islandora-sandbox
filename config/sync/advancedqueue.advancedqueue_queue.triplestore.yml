@@ -1,4 +1,4 @@
-uuid: 21545260-1ce5-472c-8bd4-adb566bc15a7
+uuid: 3929e277-5e7e-4f62-aa53-758cd1a78c51
 langcode: en
 status: true
 dependencies: {  }
@@ -10,7 +10,7 @@ backend_configuration:
 processor: daemon
 processing_time: 90
 locked: false
-threshold: {  }
-type: 2
-limit: 7
-state: success
+threshold:
+  type: 0
+  limit: 0
+  state: all

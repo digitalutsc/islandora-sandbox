@@ -1,0 +1,46 @@
+uuid: 8a017560-e67a-4656-a413-4bf633fe4af5
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - triplestore_indexer
+label: 'Delete Taxonomy terms'
+name: delete_taxonomy_terms_from_blazegraph
+group: Blazegraph
+description: 'Deleting indexed Islandora nodes from Blazegraph when content is deleted.'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: eb1ee86e-a559-487e-8a81-6b555bcfaee7
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles:
+      corporate_body: corporate_body
+      country: country
+      exhibit: exhibit
+      family: family
+      genre: genre
+      geo_location: geo_location
+      internet_media_type: internet_media_type
+      islandora_access: islandora_access
+      islandora_display: islandora_display
+      islandora_media_use: islandora_media_use
+      islandora_models: islandora_models
+      language: language
+      person: person
+      physical_form: physical_form
+      pronom: pronom
+      resource_types: resource_types
+      subject: subject
+      tags: tags
+      temporal_subjects: temporal_subjects
+reactions:
+  triplestore_delete_reaction:
+    id: triplestore_delete_reaction
+    actions: delete_taxonomy_term_in_triplestore_advancedqueue
+    saved: false
+weight: -4

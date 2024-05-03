@@ -1,0 +1,13 @@
+uuid: fb001bf1-cff3-478b-a3d5-df720ebd6e2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - triplestore_indexer
+_core:
+  default_config_hash: DUumb_qRimYqhialOAu7YgEJHHb1DX-116uPV7ujE_A
+id: delete_taxonomy_term_in_triplestore_advancedqueue
+label: 'Delete taxonomy term in Triplestore (via Advanced Queue)'
+type: taxonomy_term
+plugin: delete_taxonomy_term_in_triplestore_advancedqueue
+configuration: {  }
