@@ -1,0 +1,117 @@
+diff --git a/islandora_hocr.info.yml b/islandora_hocr.info.yml
+index 1aca0f9..f5dc9e8 100644
+--- a/islandora_hocr.info.yml
++++ b/islandora_hocr.info.yml
+@@ -3,5 +3,4 @@ description: Adds hOCR functionality
+ package: DGI Helpers
+ type: module
+ core_version_requirement: ^9 || ^10
+-dependencies:
+-  - islandora:islandora
++dependencies:
+\ No newline at end of file
+diff --git a/src/Plugin/Action/HocrDerivative.php b/src/Plugin/Action/HocrDerivative.php
+deleted file mode 100644
+index 4ae1d45..0000000
+--- a/src/Plugin/Action/HocrDerivative.php
++++ /dev/null
+@@ -1,33 +0,0 @@
+-<?php
+-
+-namespace Drupal\islandora_hocr\Plugin\Action;
+-
+-use Drupal\islandora\Plugin\Action\AbstractGenerateDerivative;
+-
+-/**
+- * Generates a hOCR derivative event.
+- *
+- * @Action(
+- *   id = "generate_hocr_derivative",
+- *   label = @Translation("Generate hOCR from an image"),
+- *   type = "node"
+- * )
+- */
+-class HocrDerivative extends AbstractGenerateDerivative {
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  public function defaultConfiguration() {
+-    $config = parent::defaultConfiguration();
+-    $config['path'] = '[date:custom:Y]-[date:custom:m]/[node:nid]-hOCR.hocr';
+-    $config['source_term_uri'] = 'http://pcdm.org/use#OriginalFile';
+-    $config['derivative_term_uri'] = 'https://discoverygarden.ca/use#hocr';
+-    $config['mimetype'] = 'text/vnd.hocr+html';
+-    $config['queue'] = 'islandora-connector-ocr';
+-    $config['destination_media_type'] = 'file';
+-    $config['args'] = '-c tessedit_create_hocr=1';
+-    return $config;
+-  }
+-
+-}
+diff --git a/src/Plugin/search_api/processor/HOCRField.php b/src/Plugin/search_api/processor/HOCRField.php
+index 08a617a..64d8e24 100644
+--- a/src/Plugin/search_api/processor/HOCRField.php
++++ b/src/Plugin/search_api/processor/HOCRField.php
+@@ -101,7 +101,7 @@ class HOCRField extends ProcessorPluginBase {
+       ],
+     ];
+     $data['file']['callable'] = function () use ($entity, &$data) {
+-      $data['file']['value'] ??= $this->getFile($entity);
++      $data['file']['value'] ??= $this->getFileLite($entity);
+       return $data['file']['value'];
+     };
+     $data['uri']['callable'] = function () use (&$data) {
+@@ -133,6 +133,52 @@ class HOCRField extends ProcessorPluginBase {
+ 
+   }
+ 
++  /**
++   * Find the target file for this node.
++   *
++   * @param \Drupal\node\NodeInterface $node
++   *   The node for which to find a file containing HOCR.
++   *
++   * @return \Drupal\file\FileInterface|null
++   *   The file containing HOCR, or NULL.
++   */
++  protected function getFileLite(NodeInterface $node) : ?FileInterface {
++    $hocr_media = [];
++    # Get all media entities referenced by this node.
++    $medias = $node->get('field_islandora_object_media')->referencedEntities();
++
++    # Find all media entities that are hOCR media uses.
++    foreach ($medias as $media) {
++      $uri = $media->field_media_use->entity->field_external_uri->uri;
++      if ($uri === 'https://discoverygarden.ca/use#hocr') {
++        $hocr_media[] = $media;
++      }
++    }
++
++    $anonymous = new AnonymousUserSession();
++
++    # Go through all the hOCR files and return the first one that is accessible by anonymous users.
++    foreach ($hocr_media as $media) {
++      if (!$media) {
++        continue;
++      }
++      elseif (!$media->access('view', $anonymous, FALSE)) {
++        continue;
++      }
++      $source = $media->getSource();
++      if ($source instanceof File) {
++        $fid = $source->getSourceFieldValue($media);
++        $file = $this->entityTypeManager->getStorage('file')->load($fid);
++        if (!$file->access('view', $anonymous, FALSE)) {
++          continue;
++        }
++        return $file;
++      }
++    }
++    return NULL;
++
++  }
++
+   /**
+    * Find the target file for this node.
+    *

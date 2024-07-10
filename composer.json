@@ -71,20 +71,57 @@
       {
          "type": "package",
          "package": {
-            "name": "islandora_lite/islandora_mirador",
-            "version": "1.0.0-beta3",
+            "name": "islandora/islandora_mirador",
+            "version": "2.3.7",
             "type": "drupal-module",
             "source": {
-               "url": "https://github.com/digitalutsc/islandora_mirador.git",
+               "url": "https://github.com/Islandora/islandora_mirador.git",
                "type": "git",
-               "reference": "1.0.0-beta3"
+               "reference": "2.3.7"
             },
             "dist": {
-               "url": "https://github.com/digitalutsc/islandora_mirador/archive/refs/tags/1.0.0-beta3.zip",
+               "url": "https://github.com/Islandora/islandora_mirador/archive/refs/tags/2.3.7.zip",
                "type": "zip"
             }
          }
       },
+      {
+         "type": "package",
+         "package": {
+            "name": "discoverygarden/islandora_hocr",
+            "version": "v1.3.3",
+            "type": "drupal-module",
+            "source": {
+               "url": "https://github.com/discoverygarden/islandora_hocr.git",
+               "type": "git",
+               "reference": "v1.3.3"
+            },
+            "dist": {
+               "url": "https://github.com/discoverygarden/islandora_hocr/archive/refs/tags/v1.3.3.zip",
+               "type": "zip"
+            }
+         }
+      },
+      {
+         "type": "package",
+         "package": {
+            "name": "born-digital/islandora_iiif_hocr",
+            "version": "2.0.3",
+            "type": "drupal-module",
+            "source": {
+               "url": "https://github.com/born-digital/islandora_iiif_hocr.git",
+               "type": "git",
+               "reference": "2.0.3"
+            },
+            "require": {
+               "discoverygarden/islandora_hocr": "*"
+            },            
+            "dist": {
+               "url": "https://github.com/Born-Digital-US/islandora_iiif_hocr/archive/refs/tags/2.0.3.zip",
+               "type": "zip"
+            }
+         }
+      },      
       {
          "type": "vcs",
          "url": "https://github.com/digitalutsc/facets_year_range"
@@ -187,13 +224,15 @@
       "drupal/views_flipped_table": "^2.0",
       "drupal/views_timelinejs": "^4.0",
       "drush/drush": "^12",
-      "islandora/jsonld": "^3.0",
+      "drupal/jsonld": "^3.0",
       "islandora/views_nested_details": "^1.0.0-beta",
       "islandora_lite/ableplayer_extend": "^1.0.0-beta",
       "islandora_lite/facets_year_range": "^1.0.0-beta",
       "islandora_lite/iiif_view_manifest": "^1.0.0-beta",
       "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
-      "islandora_lite/islandora_mirador": "^1.0.0-beta",
+      "islandora/islandora_mirador": "2.3.7",
+      "discoverygarden/islandora_hocr": "v1.3.3",
+      "born-digital/islandora_iiif_hocr": "2.0.3",
       "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
       "islandora_lite/islandora_search_processor": "^1.0.0-beta",
       "islandora_lite/islandora_site_name": "^1.0.0-beta",
@@ -322,7 +361,10 @@
          },
          "academicpuma/citeproc-php":{
             "citation_select.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/2.x/assets/patches/citation_select.patch"
-          }             
+         },
+         "discoverygarden/islandora_hocr": {
+            "islandora_hocr_lite.patch": "assets/patches/islandora_hocr_lite.patch"
+         }
       },
       "merge-plugin": {
          "include": [
