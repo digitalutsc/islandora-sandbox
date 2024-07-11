@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c72d3965cfffeb798a97628469488b4",
+    "content-hash": "1e3ecc1f29821a892e23fc88a5917cbc",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -7981,6 +7981,21 @@
             "time": "2023-11-28T21:12:40+00:00"
         },
         {
+            "name": "islandora/islandora_iiif",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digitalutsc/islandora_iiif.git",
+                "reference": "15b80ebf8610cf38e69a455aeb0fef7d351566a9"
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "time": "2024-07-11T14:30:34+00:00"
+        },
+        {
             "name": "islandora/islandora_mirador",
             "version": "2.3.7",
             "source": {
@@ -8128,20 +8143,6 @@
                 "source": "https://github.com/digitalutsc/facets_year_range/tree/1.0.0-beta3"
             },
             "time": "2023-11-16T17:41:17+00:00"
-        },
-        {
-            "name": "islandora_lite/iiif_view_manifest",
-            "version": "1.0.0-beta1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/digitalutsc/iiif_view_manifest",
-                "reference": "1.0.0-beta1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/digitalutsc/iiif_view_manifest/archive/refs/tags/1.0.0-beta1.zip"
-            },
-            "type": "drupal-module"
         },
         {
             "name": "islandora_lite/islandora_breadcrumbs",
