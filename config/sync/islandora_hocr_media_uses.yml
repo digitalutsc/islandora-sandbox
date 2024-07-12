@@ -1,0 +1,46 @@
+id: islandora_hocr_media_uses
+migration_tags:
+  - islandora
+migration_group: islandora
+label: 'Islandora hOCR Media Use(s)'
+source:
+  plugin: embedded_data
+  data_rows:
+    - name: hOCR
+      description: hOCR Derivative Term
+      url: https://discoverygarden.ca/use#hocr
+  ids:
+    url:
+      type: string
+process:
+  name: name
+  description: description
+  field_external_uri: url
+  _tid_from_name:
+    - plugin: entity_lookup
+      ignore_case: true
+      source: name
+      entity_type: taxonomy_term
+      value_key: name
+      bundle_key: vid
+      bundle: islandora_media_use
+  _tid_from_external_url:
+    - plugin: entity_lookup
+      ignore_case: true
+      source: url
+      entity_type: taxonomy_term
+      value_key: field_external_uri
+      bundle_key: vid
+      bundle: islandora_media_use
+  tid:
+    - plugin: null_coalesce
+      source:
+        - '@_tid_from_external_url'
+        - '@_tid_from_name'
+    - plugin: skip_on_empty
+      method: process
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: islandora_media_use
+migration_dependencies:
+  required: {  }
