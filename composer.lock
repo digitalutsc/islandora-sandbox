@@ -8275,25 +8275,25 @@
         },
         {
             "name": "islandora_lite/termwithuri_condition",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/termwithuri_condition.git",
-                "reference": "52de21b76ddfdeef2df37f5681d344a828f22196"
+                "reference": "2d52cc245973a4e475d34c01847168a09b086158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/termwithuri_condition/zipball/52de21b76ddfdeef2df37f5681d344a828f22196",
-                "reference": "52de21b76ddfdeef2df37f5681d344a828f22196",
+                "url": "https://api.github.com/repos/digitalutsc/termwithuri_condition/zipball/2d52cc245973a4e475d34c01847168a09b086158",
+                "reference": "2d52cc245973a4e475d34c01847168a09b086158",
                 "shasum": ""
             },
             "type": "drupal-module",
             "description": "This module provide Node/Media has term with URI conditions",
             "support": {
-                "source": "https://github.com/digitalutsc/termwithuri_condition/tree/1.0.0-beta2",
+                "source": "https://github.com/digitalutsc/termwithuri_condition/tree/1.0.0-beta3",
                 "issues": "https://github.com/digitalutsc/termwithuri_condition/issues"
             },
-            "time": "2023-11-16T18:08:41+00:00"
+            "time": "2024-07-15T19:31:19+00:00"
         },
         {
             "name": "itamair/geophp",
