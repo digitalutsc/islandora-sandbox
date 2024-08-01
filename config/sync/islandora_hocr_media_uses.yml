@@ -1,6 +1,6 @@
 id: islandora_hocr_media_uses
 migration_tags:
-  - islandora
+  - islandora_tags
 migration_group: islandora
 label: 'Islandora hOCR Media Use(s)'
 source:
