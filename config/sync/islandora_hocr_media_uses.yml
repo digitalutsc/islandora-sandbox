@@ -1,4 +1,7 @@
 id: islandora_hocr_media_uses
+dependencies:
+  config:
+    - taxonomy.vocabulary.islandora_media_use    
 migration_tags:
   - islandora
 migration_group: islandora
