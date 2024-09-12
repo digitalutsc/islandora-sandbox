@@ -100,16 +100,36 @@ class ScriptHandler {
     }
   }
 
+  /**
+   * Apply patches to the installed packages.
+   * 
+   * This function enables the use of patches found in multiple compoer.json files to be applied.
+   * Note naming convention for composer files should follow: composer_{custom name}.json
+   */
+
 
   public static function applyPatches(Event $event) {
     $rootDir = getcwd();
     $patches = [];
 
-    // Add the composer_site.json
-    self::processComposerFile($event, $rootDir . '/composer_site.json', $patches);
+    foreach (glob($rootDir . '/composer_*.json') as $composerFile) {
+      self::processComposerFile($event, $composerFile, $patches);
+    }
+
+    // Apply the patches
+    foreach ($patches as $packageDir => $patchInfo) {
+      foreach ($patchInfo as $description => $patchFile) {
+        self::applyPatch($event, $packageDir, $patchFile, $description);
+      }
+    }
 
     $event->getIO()->write("Patching process complete.");
   }
+
+  /**
+   * Process the composer.json file to extract the patches.
+   * 
+   */
 
   private static function processComposerFile(Event $event, $composerFilePath, &$patches) {
     if (!file_exists($composerFilePath)) {
@@ -124,10 +144,39 @@ class ScriptHandler {
       foreach ($composerData['extra']['patches'] as $packageName => $packagePatches) {
         foreach ($packagePatches as $patchDescription => $patchUrl) {
           $patches[$packageName][$patchDescription] = $patchUrl;
-          echo "Patch URL: $patchUrl\n";
         }
       }
     }
   }
 
+  /**
+   * Apply the patch to the package.
+   * 
+   */
+
+  private static function applyPatch(Event $event, $packageDir, $patchUrl, $description) {
+    $event->getIO()->write("Applying patch: {$description}");
+
+    // Define a temporary file to store the patch
+    $tempPatchFile = tempnam(sys_get_temp_dir(), 'patch');
+
+    // Download the patch file from the URL
+    $client = new Client();
+    try {
+      $response = $client->get($patchUrl, ['sink' => $tempPatchFile]);
+      if ($response->getStatusCode() !== 200) {
+        $event->getIO()->write("Failed to download patch from URL: {$patchUrl}");
+        return;
+      }
+    } catch (\Exception $e) {
+      $event->getIO()->write("Exception occurred while downloading patch: " . $e->getMessage());
+      return;
+    }
+
+    // Read the contents of the patch file and writes it to the output
+    // $contents = file_get_contents($tempPatchFile);
+    // $event->getIO()->write("Patch contents: {$contents}");
+
+    unlink($tempPatchFile);
+  }
 }
