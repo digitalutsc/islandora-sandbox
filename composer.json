@@ -254,6 +254,7 @@
       "post-update-cmd": [
          "@composer drupal:scaffold",
          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+         "DrupalProject\\composer\\ScriptHandler::applyPatches",
          "@patch-files"
       ],
       "patch-files": [

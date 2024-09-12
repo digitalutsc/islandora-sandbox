@@ -13,6 +13,8 @@ use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
+use GuzzleHttp\Client;
+
 class ScriptHandler {
 
   public static function createRequiredFiles(Event $event) {
@@ -95,6 +97,36 @@ class ScriptHandler {
     elseif (Comparator::lessThan($version, '1.0.0')) {
       $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
       exit(1);
+    }
+  }
+
+
+  public static function applyPatches(Event $event) {
+    $rootDir = getcwd();
+    $patches = [];
+
+    // Add the composer_site.json
+    self::processComposerFile($event, $rootDir . '/composer_site.json', $patches);
+
+    $event->getIO()->write("Patching process complete.");
+  }
+
+  private static function processComposerFile(Event $event, $composerFilePath, &$patches) {
+    if (!file_exists($composerFilePath)) {
+      $event->getIO()->write("Composer file not found: {$composerFilePath}");
+      return;
+    }
+
+    // Read and decode the composer.json (or composer_site.json) file
+    $composerData = json_decode(file_get_contents($composerFilePath), true);
+     
+    if (isset($composerData['extra']['patches'])) {
+      foreach ($composerData['extra']['patches'] as $packageName => $packagePatches) {
+        foreach ($packagePatches as $patchDescription => $patchUrl) {
+          $patches[$packageName][$patchDescription] = $patchUrl;
+          echo "Patch URL: $patchUrl\n";
+        }
+      }
     }
   }
 
