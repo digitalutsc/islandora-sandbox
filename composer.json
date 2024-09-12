@@ -58,23 +58,6 @@
       {
          "type": "package",
          "package": {
-            "name": "islandora/islandora_mirador",
-            "version": "2.3.7",
-            "type": "drupal-module",
-            "source": {
-               "url": "https://github.com/Islandora/islandora_mirador.git",
-               "type": "git",
-               "reference": "2.3.7"
-            },
-            "dist": {
-               "url": "https://github.com/Islandora/islandora_mirador/archive/refs/tags/2.3.7.zip",
-               "type": "zip"
-            }
-         }
-      },
-      {
-         "type": "package",
-         "package": {
             "name": "discoverygarden/islandora_hocr",
             "version": "v1.3.3",
             "type": "drupal-module",
@@ -216,7 +199,7 @@
       "islandora_lite/ableplayer_extend": "^1.0.0-beta",
       "islandora_lite/facets_year_range": "^1.0.0-beta",
       "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
-      "islandora/islandora_mirador": "2.3.7",
+      "drupal/islandora_mirador": "^2.3",
       "discoverygarden/islandora_hocr": "v1.3.3",
       "born-digital/islandora_iiif_hocr": "2.0.3",
       "islandora/islandora_iiif": "*",
@@ -355,7 +338,7 @@
          "born-digital/islandora_iiif_hocr": {
             "islandora_iiif_hocr_lite.patch": "assets/patches/islandora_iiif_hocr_lite.patch"
          },
-         "islandora/islandora_mirador": {
+         "drupal/islandora_mirador": {
             "islandora_mirador_lite.patch": "assets/patches/islandora_mirador_lite.patch"
          }                 
       },
