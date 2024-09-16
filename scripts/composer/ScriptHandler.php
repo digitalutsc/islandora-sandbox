@@ -103,8 +103,7 @@ class ScriptHandler {
   /**
    * Apply patches to the installed packages.
    * 
-   * This function enables the use of patches found in multiple compoer.json files to be applied.
-   * Note naming convention for composer files should follow: composer_{custom name}.json
+   * This function enables the use of patches found in multiple composer.json files to be applied.
    */
 
 
@@ -112,8 +111,14 @@ class ScriptHandler {
     $rootDir = getcwd();
     $patches = [];
 
-    foreach (glob($rootDir . '/composer_*.json') as $composerFile) {
-      self::processComposerFile($event, $composerFile, $patches);
+    // Process the patches from the root composer.json file
+
+    $composerData = json_decode(file_get_contents($rootDir . '/composer.json'), true);
+
+    if(isset($composerData['extra']['merge-plugin']['include'])) {
+      foreach ($composerData['extra']['merge-plugin']['include'] as $composerFile) {
+        self::processComposerFile($event, $rootDir . '/' . $composerFile, $patches);
+      }
     }
 
     // Apply the patches
