@@ -65,12 +65,13 @@
 
     "extra":{
         "patches":{
-            "drupal/form_mode_control":{
-                "form_mode_control-string_permission-3409223-6.patch": "https://www.drupal.org/files/issues/2023-12-20/form_mode_control-string_permission-3409223-6.patch"
-             },
-             "drupal/csvfile_formatter": {
-                "csvfile_formatter_accordians_truncatedtext.patch": "https://raw.githubusercontent.com/digitalutsc/dsu_sites_config/main/all/patches/csvfile_formatter_accordians_truncatedtext.patch"
-             }
+            "drupal/ableplayer": {
+                "ableplayer_fixentitydisplayissue.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-sandbox/config_sync_context/assets/patches/ableplayer_fixentitydisplayissue.patch"
+            },
+            "drupal/better_social_sharing_buttons":{
+                "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"
+            }
+            
         }
 
     }

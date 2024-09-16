@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2ee2125e91c764d5c58dd3cb700cef7",
+    "content-hash": "7ac38aaf8d82450cec5c1a25879db0e8",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -1303,16 +1303,16 @@
         },
         {
             "name": "digitalutsc/advanced_search_tips",
-            "version": "1.0.0-beta2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/advanced_search_tips.git",
-                "reference": "3ceb6194809849e520f0d288f7aba4119a974394"
+                "reference": "f4d27f9850614b23eaef9925b20950834afe0b4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digitalutsc/advanced_search_tips/zipball/3ceb6194809849e520f0d288f7aba4119a974394",
-                "reference": "3ceb6194809849e520f0d288f7aba4119a974394",
+                "url": "https://api.github.com/repos/digitalutsc/advanced_search_tips/zipball/f4d27f9850614b23eaef9925b20950834afe0b4f",
+                "reference": "f4d27f9850614b23eaef9925b20950834afe0b4f",
                 "shasum": ""
             },
             "require": {
@@ -1352,7 +1352,7 @@
                 "issues": "https://www.drupal.org/project/issues/advanced_search_tips",
                 "source": "http://cgit.drupalcode.org/advanced_search_tips"
             },
-            "time": "2023-11-14T21:31:33+00:00"
+            "time": "2024-09-14T03:21:32+00:00"
         },
         {
             "name": "digitalutsc/drupal_hero_banner",
@@ -2158,17 +2158,17 @@
         },
         {
             "name": "drupal/advanced_search",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/advanced_search.git",
-                "reference": "2.1.0"
+                "reference": "2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/advanced_search-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "181ff1cb3c977377b7e5cedc987c34f87106c1c2"
+                "url": "https://ftp.drupal.org/files/projects/advanced_search-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "7a4a34a92c4aa8ce16ca9443c563ec8a3381cfa3"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10",
@@ -2184,8 +2184,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1720035646",
+                    "version": "2.1.1",
+                    "datestamp": "1726285661",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -4265,6 +4265,10 @@
                     "homepage": "https://www.drupal.org/user/647364"
                 },
                 {
+                    "name": "joevagyok",
+                    "homepage": "https://www.drupal.org/user/2876343"
+                },
+                {
                     "name": "jyve",
                     "homepage": "https://www.drupal.org/user/591438"
                 },
@@ -6012,7 +6016,7 @@
             ],
             "authors": [
                 {
-                    "name": "Cellar Door",
+                    "name": "cellar door",
                     "homepage": "https://www.drupal.org/user/658076"
                 },
                 {
@@ -6326,29 +6330,29 @@
         },
         {
             "name": "drupal/media_thumbnails",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/media_thumbnails.git",
-                "reference": "8.x-1.0-beta2"
+                "reference": "8.x-1.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/media_thumbnails-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
-                "shasum": "127cdea8280fa1f96eac4bf6096825db16c489ac"
+                "url": "https://ftp.drupal.org/files/projects/media_thumbnails-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "e37f26545c101a15601c09f6bc34430e2f45a656"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^8 || ^9 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1694697406",
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1726479922",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -6358,14 +6362,24 @@
             ],
             "authors": [
                 {
-                    "name": "drubb",
-                    "homepage": "https://www.drupal.org/user/69706"
+                    "name": "Boris Böhne (drubb)",
+                    "homepage": "https://www.drupal.org/u/drubb",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Quentin Fahrner (renrhaf)",
+                    "homepage": "https://www.drupal.org/u/renrhaf",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Plugin manager for media entity thumbnail generation",
             "homepage": "https://www.drupal.org/project/media_thumbnails",
+            "keywords": [
+                "Drupal"
+            ],
             "support": {
-                "source": "https://git.drupalcode.org/project/media_thumbnails"
+                "source": "https://git.drupalcode.org/project/media_thumbnails",
+                "issues": "https://www.drupal.org/project/issues/media_thumbnails"
             }
         },
         {
@@ -6708,7 +6722,7 @@
                     "role": "Developer"
                 },
                 {
-                    "name": "Dave Reid",
+                    "name": "dave reid",
                     "homepage": "https://www.drupal.org/user/53892"
                 }
             ],
@@ -7713,20 +7727,20 @@
         },
         {
             "name": "drupal/search_api_location",
-            "version": "1.0.0-alpha3",
+            "version": "1.0.0-alpha4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_location.git",
-                "reference": "8.x-1.0-alpha3"
+                "reference": "8.x-1.0-alpha4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_location-8.x-1.0-alpha3.zip",
-                "reference": "8.x-1.0-alpha3",
-                "shasum": "feed01b73c60ba2f9512909861ed0a205e030563"
+                "url": "https://ftp.drupal.org/files/projects/search_api_location-8.x-1.0-alpha4.zip",
+                "reference": "8.x-1.0-alpha4",
+                "shasum": "782313b945328e0c7bab3e51f748cddbb82649a2"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
+                "drupal/core": "^8.8 || ^9 || ^10 || ^11",
                 "drupal/search_api": "^1.28",
                 "itamair/geophp": "^1.2"
             },
@@ -7738,8 +7752,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-alpha3",
-                    "datestamp": "1677057556",
+                    "version": "8.x-1.0-alpha4",
+                    "datestamp": "1726238587",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -7760,7 +7774,7 @@
                     "homepage": "https://www.drupal.org/user/205582"
                 },
                 {
-                    "name": "JeroenT",
+                    "name": "jeroent",
                     "homepage": "https://www.drupal.org/user/2228934"
                 },
                 {
@@ -7768,7 +7782,7 @@
                     "homepage": "https://www.drupal.org/user/785804"
                 },
                 {
-                    "name": "Nick_vh",
+                    "name": "nick_vh",
                     "homepage": "https://www.drupal.org/user/122682"
                 },
                 {
@@ -11285,16 +11299,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1"
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/683130c2ff8c2739f4822ff7ac5c873ec529abd1",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
                 "shasum": ""
             },
             "require": {
@@ -11337,9 +11351,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.1.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.2.0"
             },
-            "time": "2024-07-01T20:03:41+00:00"
+            "time": "2024-09-15T16:40:33+00:00"
         },
         {
             "name": "pear/archive_tar",

@@ -143,6 +143,7 @@ class ScriptHandler {
     if (isset($composerData['extra']['patches'])) {
       foreach ($composerData['extra']['patches'] as $packageName => $packagePatches) {
         foreach ($packagePatches as $patchDescription => $patchUrl) {
+          
           $patches[$packageName][$patchDescription] = $patchUrl;
         }
       }
@@ -158,25 +159,46 @@ class ScriptHandler {
     $event->getIO()->write("Applying patch: {$description}");
 
     // Define a temporary file to store the patch
-    $tempPatchFile = tempnam(sys_get_temp_dir(), 'patch');
+    $tempPatchFile = tempnam(getcwd(), 'patch');
+    $patchContents = file_get_contents($patchUrl);
 
-    // Download the patch file from the URL
-    $client = new Client();
-    try {
-      $response = $client->get($patchUrl, ['sink' => $tempPatchFile]);
-      if ($response->getStatusCode() !== 200) {
-        $event->getIO()->write("Failed to download patch from URL: {$patchUrl}");
-        return;
-      }
-    } catch (\Exception $e) {
-      $event->getIO()->write("Exception occurred while downloading patch: " . $e->getMessage());
+    file_put_contents($tempPatchFile, $patchContents);
+
+
+    //From the github url, extract the package name
+    $package = explode('/', $packageDir);
+    $package = end($package);
+
+    //check if patch has already been applied
+    $command = sprintf('patch -R -p1 --dry-run -d web/modules/contrib/%s < %s', $package, $tempPatchFile);
+    exec($command, $output, $returnCode);
+
+    if ($returnCode === 0) {
+      $event->getIO()->write("Patch already applied: {$description}");
+      unlink($tempPatchFile);
       return;
     }
 
-    // Read the contents of the patch file and writes it to the output
-    // $contents = file_get_contents($tempPatchFile);
-    // $event->getIO()->write("Patch contents: {$contents}");
+    // print patch file name
+    $command = sprintf('patch -d web/modules/contrib/%s < %s', $package, $tempPatchFile);
 
+    // Execute the command
+
+    $event->getIO()->write("Executing command: {$command}");
+    exec($command, $output, $returnCode);
+
+    // Check if the patch was applied successfully
+    if ($returnCode !== 0) {
+      $event->getIO()->write("Failed to apply patch: {$description}");
+      return;
+    }
+
+    $event->getIO()->write("Patch applied successfully: {$description}");
+
+    // Clean up the temporary patch file
     unlink($tempPatchFile);
+
+
   }
+
 }

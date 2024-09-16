@@ -254,8 +254,8 @@
       "post-update-cmd": [
          "@composer drupal:scaffold",
          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-         "DrupalProject\\composer\\ScriptHandler::applyPatches",
-         "@patch-files"
+         "@patch-files",
+         "DrupalProject\\composer\\ScriptHandler::applyPatches"
       ],
       "patch-files": [
          "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
@@ -323,7 +323,7 @@
          },
          "academicpuma/citeproc-php":{
             "citation_select.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/2.x/assets/patches/citation_select.patch"
-          }             
+         }
       },
       "merge-plugin": {
          "include": [
