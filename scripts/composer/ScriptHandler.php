@@ -13,8 +13,6 @@ use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
-use GuzzleHttp\Client;
-
 class ScriptHandler {
 
   public static function createRequiredFiles(Event $event) {
@@ -156,6 +154,42 @@ class ScriptHandler {
   }
 
   /**
+   * Get the directory of the package to apply the patch.
+   * 
+   * This function checks if the package directory is available in the web/modules/contrib 
+   * directory. If not, it extracts the package directory from the patch file.
+   * 
+   */
+
+  private static function getPatchDir($packageDir, $file, $description) {
+    $dir = 'web/modules/contrib/';
+    
+    $package = basename($packageDir);
+
+    if (is_dir($dir . $package)) {
+      return $dir . $package;
+    }
+
+    // Extract the package name from the file
+    $package = trim(explode("\n", $file)[0]);
+    $package = basename(end(explode(' ', $package)));
+
+    if (is_dir($dir . $package)) {
+      return $dir . $package;
+    }
+
+    // Extract the package name from the description
+    $package = explode('.', $description)[0];
+
+    if (is_dir($dir . $package)) {
+      return $dir . $package;
+    }
+
+
+    return '';
+  }
+
+  /**
    * Apply the patch to the package.
    * 
    */
@@ -164,18 +198,15 @@ class ScriptHandler {
     $event->getIO()->write("Applying patch: {$description}");
 
     // Define a temporary file to store the patch
-    $tempPatchFile = tempnam(getcwd(), 'patch');
+    $tempPatchFile = tempnam(getcwd() . '/assets/patches/', 'patch');
     $patchContents = file_get_contents($patchUrl);
 
     file_put_contents($tempPatchFile, $patchContents);
 
-
-    //From the github url, extract the package name
-    $package = explode('/', $packageDir);
-    $package = end($package);
+    $patchDir = self::getPatchDir($packageDir, $patchContents, $description);
 
     //check if patch has already been applied
-    $command = sprintf('patch -R -p1 --dry-run -d web/modules/contrib/%s < %s', $package, $tempPatchFile);
+    $command = sprintf('patch -R -p1 --dry-run -d %s < %s', $patchDir, $tempPatchFile);
     exec($command, $output, $returnCode);
 
     if ($returnCode === 0) {
@@ -185,7 +216,7 @@ class ScriptHandler {
     }
 
     // print patch file name
-    $command = sprintf('patch -d web/modules/contrib/%s < %s', $package, $tempPatchFile);
+    $command = sprintf('patch -d %s < %s', $patchDir, $tempPatchFile);
 
     // Execute the command
 
