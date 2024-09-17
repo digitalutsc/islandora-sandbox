@@ -105,7 +105,7 @@ class ScriptHandler {
    */
 
 
-  public static function applyPatches(Event $event) {
+  public static function applyAdditionalPatches(Event $event) {
     $rootDir = getcwd();
     $patches = [];
 
@@ -156,35 +156,39 @@ class ScriptHandler {
   /**
    * Get the directory of the package to apply the patch.
    * 
-   * This function checks if the package directory is available in the web/modules/contrib 
-   * directory. If not, it extracts the package directory from the patch file.
+   * This function returns the patch directory if the package directory 
+   * is available in the web/modules/contrib directory.
+   * Otherwise it returns an empty string.
+   * 
    * 
    */
 
   private static function getPatchDir($packageDir, $file, $description) {
     $dir = 'web/modules/contrib/';
-    
-    $package = basename($packageDir);
-
-    if (is_dir($dir . $package)) {
-      return $dir . $package;
-    }
 
     // Extract the package name from the file
-    $package = trim(explode("\n", $file)[0]);
-    $package = basename(end(explode(' ', $package)));
+    $line = explode(" ", (explode("\n", $file)[0]));
+    $packageName = basename(array_pop($line));
 
-    if (is_dir($dir . $package)) {
-      return $dir . $package;
+    $module = basename($packageDir);
+    
+    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+      return $dir . $module;
     }
 
-    // Extract the package name from the description
-    $package = explode('.', $description)[0];
+    $module = explode('.', $packageName)[0];
+    
 
-    if (is_dir($dir . $package)) {
-      return $dir . $package;
+    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+      return $dir . $module;
     }
+    
+    // // Extract the package name from the description
+    $module = explode('.', $description)[0];
 
+    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+      return $dir . $module;
+    }
 
     return '';
   }
@@ -195,41 +199,43 @@ class ScriptHandler {
    */
 
   private static function applyPatch(Event $event, $packageDir, $patchUrl, $description) {
-    $event->getIO()->write("Applying patch: {$description}");
 
     // Define a temporary file to store the patch
-    $tempPatchFile = tempnam(getcwd() . '/assets/patches/', 'patch');
+    $tempPatchFile = tempnam(sys_get_temp_dir(), 'patch');
     $patchContents = file_get_contents($patchUrl);
 
     file_put_contents($tempPatchFile, $patchContents);
 
     $patchDir = self::getPatchDir($packageDir, $patchContents, $description);
 
-    //check if patch has already been applied
-    $command = sprintf('patch -R -p1 --dry-run -d %s < %s', $patchDir, $tempPatchFile);
+    $package = basename($packageDir);
+
+    if(!is_dir($patchDir)) {
+      $event->getIO()->write("<fg=red>Unable to successfully patch</>");
+      return;
+    }
+
+    //Check if patch has already been applied
+    $command = sprintf('patch -R -p1 --dry-run --forward -d %s < %s', $patchDir, $tempPatchFile);
     exec($command, $output, $returnCode);
 
     if ($returnCode === 0) {
-      $event->getIO()->write("Patch already applied: {$description}");
+      $event->getIO()->write("<fg=yellow>Patch already applied: {$description}</>");
       unlink($tempPatchFile);
       return;
     }
 
-    // print patch file name
-    $command = sprintf('patch -d %s < %s', $patchDir, $tempPatchFile);
-
-    // Execute the command
-
-    $event->getIO()->write("Executing command: {$command}");
+    // Apply the patch
+    $command = sprintf('patch -p1 -d %s < %s', $patchDir, $tempPatchFile);
     exec($command, $output, $returnCode);
 
     // Check if the patch was applied successfully
     if ($returnCode !== 0) {
-      $event->getIO()->write("Failed to apply patch: {$description}");
+      $event->getIO()->write("<fg=red>FAILURE: {$description}</>");
       return;
     }
 
-    $event->getIO()->write("Patch applied successfully: {$description}");
+    $event->getIO()->write("<fg=green>Patch applied successfully: {$description}</>");
 
     // Clean up the temporary patch file
     unlink($tempPatchFile);
