@@ -1,15 +1,17 @@
---- FieldItemNormalizer.php	2024-10-15 08:39:53
-+++ modified.php	2024-10-15 08:39:30
-@@ -105,7 +105,10 @@
+diff --git a/src/Normalizer/FieldItemNormalizer.php b/src/Normalizer/FieldItemNormalizer.php
+index efaecd5..4e28302 100644
+--- a/src/Normalizer/FieldItemNormalizer.php
++++ b/src/Normalizer/FieldItemNormalizer.php
+@@ -105,7 +105,11 @@ class FieldItemNormalizer extends NormalizerBase {
          // Getting rid of @type to allow @language.
          // @see https://json-ld.org/spec/latest/json-ld/#string-internationalization.
          unset($values_clean['@type']);
 -        $values_clean['@language'] = $context['langcode'];
-+        
++
 +        if($field->getName() != 'field_external_uri'){
-+            $values_clean['@language'] = $context['langcode'];
++          $values_clean['@language'] = $context['langcode'];
 +        }
++          
        }
  
        array_filter($values_clean);
-\ No newline at end of file
