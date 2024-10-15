@@ -340,6 +340,9 @@
          },
          "drupal/islandora_mirador": {
             "islandora_mirador_lite.patch": "assets/patches/islandora_mirador_lite.patch"
+         },
+         "drupal/jsonld": {
+            "field_item_normalizer.patch": "assets/patches/field_item_normalizer.patch"
          }                 
       },
       "merge-plugin": {

@@ -1,0 +1,15 @@
+--- FieldItemNormalizer.php	2024-10-15 08:39:53
++++ modified.php	2024-10-15 08:39:30
+@@ -105,7 +105,10 @@
+         // Getting rid of @type to allow @language.
+         // @see https://json-ld.org/spec/latest/json-ld/#string-internationalization.
+         unset($values_clean['@type']);
+-        $values_clean['@language'] = $context['langcode'];
++        
++        if($field->getName() != 'field_external_uri'){
++            $values_clean['@language'] = $context['langcode'];
++        }
+       }
+ 
+       array_filter($values_clean);
+\ No newline at end of file
