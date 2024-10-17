@@ -105,7 +105,7 @@ class ScriptHandler {
    */
 
 
-  public static function applyAdditionalPatches(Event $event) {
+  public static function applyDrupalPatches(Event $event) {
     $rootDir = getcwd();
     $patches = [];
 
@@ -172,21 +172,20 @@ class ScriptHandler {
 
     $module = basename($packageDir);
     
-    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+    if (is_dir($dir . $module)) {
       return $dir . $module;
     }
 
     $module = explode('.', $packageName)[0];
     
-
-    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+    if (is_dir($dir . $module)) {
       return $dir . $module;
     }
     
     // // Extract the package name from the description
     $module = explode('.', $description)[0];
 
-    if (is_dir($dir . $module) && file_exists($dir . $module . '/' . $packageName)) {
+    if (is_dir($dir . $module)) {
       return $dir . $module;
     }
 

@@ -255,7 +255,7 @@
          "@composer drupal:scaffold",
          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
          "@patch-files",
-         "DrupalProject\\composer\\ScriptHandler::applyAdditionalPatches"
+         "DrupalProject\\composer\\ScriptHandler::applyDrupalPatches"
       ],
       "patch-files": [
          "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
