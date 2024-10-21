@@ -98,4 +98,148 @@ class ScriptHandler {
     }
   }
 
+  /**
+   * Apply patches to the installed packages.
+   * 
+   * This function enables the use of patches found in multiple composer.json files to be applied.
+   */
+
+
+  public static function applyDrupalPatches(Event $event) {
+    $rootDir = getcwd();
+    $patches = [];
+
+    // Process the patches from the root composer.json file
+
+    $composerData = json_decode(file_get_contents($rootDir . '/composer.json'), true);
+
+    if(isset($composerData['extra']['merge-plugin']['include'])) {
+      foreach ($composerData['extra']['merge-plugin']['include'] as $composerFile) {
+        self::processComposerFile($event, $rootDir . '/' . $composerFile, $patches);
+      }
+    }
+
+    // Apply the patches
+    foreach ($patches as $packageDir => $patchInfo) {
+      foreach ($patchInfo as $description => $patchFile) {
+        self::applyPatch($event, $packageDir, $patchFile, $description);
+      }
+    }
+
+    $event->getIO()->write("Patching process complete.");
+  }
+
+  /**
+   * Process the composer.json file to extract the patches.
+   * 
+   */
+
+  private static function processComposerFile(Event $event, $composerFilePath, &$patches) {
+    if (!file_exists($composerFilePath)) {
+      $event->getIO()->write("Composer file not found: {$composerFilePath}");
+      return;
+    }
+
+    // Read and decode the composer.json (or composer_site.json) file
+    $composerData = json_decode(file_get_contents($composerFilePath), true);
+     
+    if (isset($composerData['extra']['patches'])) {
+      foreach ($composerData['extra']['patches'] as $packageName => $packagePatches) {
+        foreach ($packagePatches as $patchDescription => $patchUrl) {
+          
+          $patches[$packageName][$patchDescription] = $patchUrl;
+        }
+      }
+    }
+  }
+
+  /**
+   * Get the directory of the package to apply the patch.
+   * 
+   * This function returns the patch directory if the package directory 
+   * is available in the web/modules/contrib directory.
+   * Otherwise it returns an empty string.
+   * 
+   * 
+   */
+
+  private static function getPatchDir($packageDir, $file, $description) {
+    $dir = 'web/modules/contrib/';
+
+    // Extract the package name from the file
+    $line = explode(" ", (explode("\n", $file)[0]));
+    $packageName = basename(array_pop($line));
+
+    $module = basename($packageDir);
+    
+    if (is_dir($dir . $module)) {
+      return $dir . $module;
+    }
+
+    $module = explode('.', $packageName)[0];
+    
+    if (is_dir($dir . $module)) {
+      return $dir . $module;
+    }
+    
+    // // Extract the package name from the description
+    $module = explode('.', $description)[0];
+
+    if (is_dir($dir . $module)) {
+      return $dir . $module;
+    }
+
+    return '';
+  }
+
+  /**
+   * Apply the patch to the package.
+   * 
+   */
+
+  private static function applyPatch(Event $event, $packageDir, $patchUrl, $description) {
+
+    // Define a temporary file to store the patch
+    $tempPatchFile = tempnam(sys_get_temp_dir(), 'patch');
+    $patchContents = file_get_contents($patchUrl);
+
+    file_put_contents($tempPatchFile, $patchContents);
+
+    $patchDir = self::getPatchDir($packageDir, $patchContents, $description);
+
+    $package = basename($packageDir);
+
+    if(!is_dir($patchDir)) {
+      $event->getIO()->write("<fg=red>Unable to successfully patch</>");
+      return;
+    }
+
+    //Check if patch has already been applied
+    $command = sprintf('patch -R -p1 --dry-run --forward -d %s < %s', $patchDir, $tempPatchFile);
+    exec($command, $output, $returnCode);
+
+    if ($returnCode === 0) {
+      $event->getIO()->write("<fg=yellow>Patch already applied: {$description}</>");
+      unlink($tempPatchFile);
+      return;
+    }
+
+    // Apply the patch
+    $command = sprintf('patch -p1 -d %s < %s', $patchDir, $tempPatchFile);
+    exec($command, $output, $returnCode);
+
+    // Check if the patch was applied successfully
+    if ($returnCode !== 0) {
+      $event->getIO()->write("<fg=red>FAILURE: {$description}</>");
+      return;
+    }
+
+    $event->getIO()->write("<fg=green>Patch applied successfully: {$description}</>");
+
+    // Clean up the temporary patch file
+    unlink($tempPatchFile);
+
+
+  }
+
 }
