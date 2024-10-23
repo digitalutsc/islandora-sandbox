@@ -52,9 +52,25 @@
          }
       },
       {
-         "url": "https://github.com/digitalutsc/islandora_iiif.git",
-         "type": "git"
-      },
+         "type": "package",
+         "package": {
+            "name": "islandora/islandora_iiif",
+            "version": "1.0.0",
+            "type": "drupal-module",
+            "source": {
+               "url": "https://github.com/digitalutsc/islandora_iiif.git",
+               "type": "git",
+               "reference": "1.0.0"
+            },
+            "require": {
+               "discoverygarden/islandora_hocr": "*"
+            },            
+            "dist": {
+               "url": "https://github.com/digitalutsc/islandora_iiif/archive/refs/tags/1.0.0.zip",
+               "type": "zip"
+            }
+         }
+      },      
       {
          "type": "package",
          "package": {
@@ -202,7 +218,7 @@
       "drupal/islandora_mirador": "^2.3",
       "discoverygarden/islandora_hocr": "v1.3.3",
       "born-digital/islandora_iiif_hocr": "2.0.3",
-      "islandora/islandora_iiif": "*",
+      "islandora/islandora_iiif": "^1",
       "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
       "islandora_lite/islandora_search_processor": "^1.0.0-beta",
       "islandora_lite/islandora_site_name": "^1.1",
