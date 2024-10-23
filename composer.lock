@@ -10305,13 +10305,28 @@
         },
         {
             "name": "islandora_lite/islandora_site_name",
-            "version": "1.0.0-beta2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_site_name.git",
-                "reference": "1.0.0-beta2"
+                "reference": "8865cd97ffa13821d58ee51738d1dc9805f7f167"
             },
-            "type": "drupal-module"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digitalutsc/islandora_site_name/zipball/8865cd97ffa13821d58ee51738d1dc9805f7f167",
+                "reference": "8865cd97ffa13821d58ee51738d1dc9805f7f167",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "description": "Search API processor for indexing Islandora site names with Solr.",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://github.com/digitalutsc/islandora_site_name/tree/1.1.0",
+                "issues": "https://github.com/digitalutsc/islandora_site_name/issues"
+            },
+            "time": "2024-10-22T13:52:22+00:00"
         },
         {
             "name": "islandora_lite/serve_iiif_file",
