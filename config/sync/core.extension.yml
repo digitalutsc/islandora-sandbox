@@ -64,6 +64,8 @@ module:
   islandora_group: 0
   islandora_iiif: 0
   islandora_mirador: 0
+  islandora_hocr: 0
+  islandora_iiif_hocr: 0
   islandora_object_thumbnail: 0
   islandora_search_processor: 0
   islandora_site_name: 0

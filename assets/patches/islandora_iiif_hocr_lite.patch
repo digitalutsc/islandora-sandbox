@@ -1,0 +1,566 @@
+diff --git a/config/optional/views.view.search_in_hocr.yml b/config/optional/views.view.search_in_hocr.yml
+index e254c37..0bc69df 100644
+--- a/config/optional/views.view.search_in_hocr.yml
++++ b/config/optional/views.view.search_in_hocr.yml
+@@ -1,21 +1,19 @@
+-uuid: 36020969-423e-4181-872c-16af33765301
+ langcode: en
+ status: true
+ dependencies:
+   config:
+     - node.type.islandora_object
+-    - search_api.index.default_solr_index
++    - search_api.index.default_solr_index_islandora_lite
+   module:
+     - islandora_iiif_hocr
+     - rest
+     - search_api
+-  default_config_hash: lvIQBL8yMLi95TLjdkveIf-I2hKet-_oOOsWG4ywE10
+ id: search_in_hocr
+ label: 'Search in hOCR'
+ module: views
+ description: 'A search page preconfigured to search through the content of your site'
+ tag: ''
+-base_table: search_api_index_default_solr_index
++base_table: search_api_index_default_solr_index_islandora_lite
+ base_field: search_api_id
+ display:
+   default:
+@@ -28,7 +26,7 @@ display:
+       fields:
+         author:
+           id: author
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: author
+           relationship: none
+           group_type: group
+@@ -99,12 +97,12 @@ display:
+             multi_separator: ', '
+         title_model_uri:
+           id: title_model_uri
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: title_model_uri
+           plugin_id: search_api
+         field_resource_type_uri:
+           id: field_resource_type_uri
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: field_resource_type_uri
+           plugin_id: search_api
+         field_display_title:
+@@ -117,6 +115,7 @@ display:
+         type: full
+         options:
+           offset: 0
++          pagination_heading_level: h4
+           items_per_page: 10
+           total_pages: null
+           id: 0
+@@ -148,13 +147,13 @@ display:
+         type: none
+         options: {  }
+       cache:
+-        type: none
++        type: search_api_none
+         options: {  }
+       empty: {  }
+       sorts:
+         title:
+           id: title
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: title
+           relationship: none
+           group_type: group
+@@ -167,7 +166,7 @@ display:
+           exposed: true
+         search_api_relevance:
+           id: search_api_relevance
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_relevance
+           relationship: none
+           group_type: group
+@@ -180,7 +179,7 @@ display:
+           exposed: true
+         item_2field_one_date_as_date:
+           id: item_2field_one_date_as_date
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: item_2field_one_date_as_date
+           relationship: none
+           group_type: group
+@@ -193,7 +192,7 @@ display:
+           exposed: true
+         field_identifier:
+           id: field_identifier
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: field_identifier
+           relationship: none
+           group_type: group
+@@ -208,7 +207,7 @@ display:
+       filters:
+         search_api_fulltext:
+           id: search_api_fulltext
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_fulltext
+           relationship: none
+           group_type: group
+@@ -255,7 +254,7 @@ display:
+           fields: {  }
+         type:
+           id: type
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: type
+           relationship: none
+           group_type: group
+@@ -345,7 +344,7 @@ display:
+           plugin_id: result
+           empty: true
+           content: 'Displaying results @start - @end of @total'
+-      footer:
++      footer: null
+       display_extenders: {  }
+     cache_metadata:
+       max-age: -1
+@@ -357,9 +356,8 @@ display:
+         - 'url.query_args:sort_order'
+         - 'user.node_grants:view'
+       tags:
+-        - 'config:field.storage.node.field_display_title'
+-        - 'config:search_api.index.default_solr_index'
+-        - 'search_api_list:default_solr_index'
++        - 'config:search_api.index.default_solr_index_islandora_lite'
++        - 'search_api_list:default_solr_index_islandora_lite'
+   rest_export_1:
+     id: rest_export_1
+     display_title: 'Search in Paged Content REST Export'
+@@ -370,7 +368,7 @@ display:
+       fields:
+         author:
+           id: author
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: author
+           relationship: none
+           group_type: group
+@@ -439,15 +437,9 @@ display:
+             use_highlighting: false
+             multi_type: separator
+             multi_separator: ', '
+-        field_display_title:
+-          id: field_display_title
+-          table: search_api_datasource_default_solr_index_entity_node
+-          field: field_display_title
+-          entity_type: node
+-          plugin_id: search_api_field
+         search_api_excerpt_1:
+           id: search_api_excerpt_1
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_excerpt
+           relationship: none
+           group_type: group
+@@ -500,7 +492,7 @@ display:
+           multi_separator: ', '
+         content:
+           id: content
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: content
+           relationship: none
+           group_type: group
+@@ -551,6 +543,76 @@ display:
+           use_highlighting: true
+           multi_type: separator
+           multi_separator: ', '
++        fulltext_title:
++          id: fulltext_title
++          table: search_api_index_default_solr_index_islandora_lite
++          field: fulltext_title
++          relationship: none
++          group_type: group
++          admin_label: ''
++          plugin_id: search_api_field
++          label: ''
++          exclude: false
++          alter:
++            alter_text: false
++            text: ''
++            make_link: false
++            path: ''
++            absolute: false
++            external: false
++            replace_spaces: false
++            path_case: none
++            trim_whitespace: false
++            alt: ''
++            rel: ''
++            link_class: ''
++            prefix: ''
++            suffix: ''
++            target: ''
++            nl2br: false
++            max_length: 0
++            word_boundary: true
++            ellipsis: true
++            more_link: false
++            more_link_text: ''
++            more_link_path: ''
++            strip_tags: false
++            trim: false
++            preserve_tags: ''
++            html: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: false
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_empty: false
++          empty_zero: false
++          hide_alter_empty: true
++          click_sort_column: value
++          type: string
++          settings:
++            link_to_entity: false
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          field_rendering: true
++          fallback_handler: search_api
++          fallback_options:
++            link_to_item: false
++            use_highlighting: false
++            multi_type: separator
++            multi_separator: ', '
+       pager:
+         type: some
+         options:
+@@ -559,7 +621,7 @@ display:
+       sorts:
+         search_api_relevance:
+           id: search_api_relevance
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_relevance
+           relationship: none
+           group_type: group
+@@ -571,10 +633,10 @@ display:
+             field_identifier: search_api_relevance
+           exposed: true
+       arguments:
+-        field_member_of:
+-          id: field_member_of
+-          table: search_api_index_default_solr_index
+-          field: field_member_of
++        field_part_of:
++          id: field_part_of
++          table: search_api_index_default_solr_index_islandora_lite
++          field: field_part_of
+           relationship: none
+           group_type: group
+           admin_label: ''
+@@ -608,7 +670,7 @@ display:
+       filters:
+         search_api_fulltext:
+           id: search_api_fulltext
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_fulltext
+           relationship: none
+           group_type: group
+@@ -660,7 +722,7 @@ display:
+             - content
+         type:
+           id: type
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: type
+           relationship: none
+           group_type: group
+@@ -710,7 +772,7 @@ display:
+           row_class: ''
+           default_row_class: true
+           canvas_media_term_uri: 'http://pcdm.org/use#ServiceFile'
+-          canvas_media_term: '7'
++          canvas_media_term: '5'
+       row:
+         type: data_field
+         options:
+@@ -768,9 +830,8 @@ display:
+         - 'url.query_args:sort_order'
+         - 'user.node_grants:view'
+       tags:
+-        - 'config:field.storage.node.field_display_title'
+-        - 'config:search_api.index.default_solr_index'
+-        - 'search_api_list:default_solr_index'
++        - 'config:search_api.index.default_solr_index_islandora_lite'
++        - 'search_api_list:default_solr_index_islandora_lite'
+   rest_export_2:
+     id: rest_export_2
+     display_title: 'Search in Single Page Content REST Export'
+@@ -781,7 +842,7 @@ display:
+       fields:
+         author:
+           id: author
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: author
+           relationship: none
+           group_type: group
+@@ -850,15 +911,9 @@ display:
+             use_highlighting: false
+             multi_type: separator
+             multi_separator: ', '
+-        field_display_title:
+-          id: field_display_title
+-          table: search_api_datasource_default_solr_index_entity_node
+-          field: field_display_title
+-          entity_type: node
+-          plugin_id: search_api_field
+         search_api_excerpt_1:
+           id: search_api_excerpt_1
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_excerpt
+           relationship: none
+           group_type: group
+@@ -909,6 +964,76 @@ display:
+           use_highlighting: true
+           multi_type: separator
+           multi_separator: ', '
++        fulltext_title:
++          id: fulltext_title
++          table: search_api_index_default_solr_index_islandora_lite
++          field: fulltext_title
++          relationship: none
++          group_type: group
++          admin_label: ''
++          plugin_id: search_api_field
++          label: ''
++          exclude: false
++          alter:
++            alter_text: false
++            text: ''
++            make_link: false
++            path: ''
++            absolute: false
++            external: false
++            replace_spaces: false
++            path_case: none
++            trim_whitespace: false
++            alt: ''
++            rel: ''
++            link_class: ''
++            prefix: ''
++            suffix: ''
++            target: ''
++            nl2br: false
++            max_length: 0
++            word_boundary: true
++            ellipsis: true
++            more_link: false
++            more_link_text: ''
++            more_link_path: ''
++            strip_tags: false
++            trim: false
++            preserve_tags: ''
++            html: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: false
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_empty: false
++          empty_zero: false
++          hide_alter_empty: true
++          click_sort_column: value
++          type: string
++          settings:
++            link_to_entity: false
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          field_rendering: false
++          fallback_handler: search_api
++          fallback_options:
++            link_to_item: false
++            use_highlighting: false
++            multi_type: separator
++            multi_separator: ', '
+       pager:
+         type: some
+         options:
+@@ -917,7 +1042,7 @@ display:
+       sorts:
+         search_api_relevance:
+           id: search_api_relevance
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_relevance
+           relationship: none
+           group_type: group
+@@ -929,10 +1054,10 @@ display:
+             field_identifier: search_api_relevance
+           exposed: true
+       arguments:
+-        nid_1:
+-          id: nid_1
+-          table: search_api_index_default_solr_index
+-          field: nid_1
++        nid:
++          id: nid
++          table: search_api_index_default_solr_index_islandora_lite
++          field: nid
+           relationship: none
+           group_type: group
+           admin_label: ''
+@@ -966,7 +1091,7 @@ display:
+       filters:
+         search_api_fulltext:
+           id: search_api_fulltext
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: search_api_fulltext
+           relationship: none
+           group_type: group
+@@ -1018,7 +1143,7 @@ display:
+             - content
+         type:
+           id: type
+-          table: search_api_index_default_solr_index
++          table: search_api_index_default_solr_index_islandora_lite
+           field: type
+           relationship: none
+           group_type: group
+@@ -1068,7 +1193,7 @@ display:
+           row_class: ''
+           default_row_class: true
+           canvas_media_term_uri: 'http://pcdm.org/use#ServiceFile'
+-          canvas_media_term: '7'
++          canvas_media_term: '5'
+       row:
+         type: data_field
+         options:
+@@ -1127,6 +1252,5 @@ display:
+         - 'url.query_args:sort_order'
+         - 'user.node_grants:view'
+       tags:
+-        - 'config:field.storage.node.field_display_title'
+-        - 'config:search_api.index.default_solr_index'
+-        - 'search_api_list:default_solr_index'
++        - 'config:search_api.index.default_solr_index_islandora_lite'
++        - 'search_api_list:default_solr_index_islandora_lite'
+diff --git a/islandora_iiif_hocr.info.yml b/islandora_iiif_hocr.info.yml
+index 8f86bed..134055b 100644
+--- a/islandora_iiif_hocr.info.yml
++++ b/islandora_iiif_hocr.info.yml
+@@ -5,3 +5,4 @@ package: Islandora
+ core_version_requirement: ^9 || ^10
+ dependencies:
+   - islandora:islandora_iiif
++  - islandora_lite:termwithuri_condition
+diff --git a/src/Plugin/views/style/IiifSearchResultAnnotations.php b/src/Plugin/views/style/IiifSearchResultAnnotations.php
+index 87c7e80..dce21fc 100644
+--- a/src/Plugin/views/style/IiifSearchResultAnnotations.php
++++ b/src/Plugin/views/style/IiifSearchResultAnnotations.php
+@@ -5,7 +5,6 @@ namespace Drupal\islandora_iiif_hocr\Plugin\views\style;
+ use Drupal\Core\Entity\Annotation\EntityType;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Form\FormStateInterface;
+-use Drupal\islandora\IslandoraUtils;
+ use Drupal\search_api\Item\Item;
+ use Drupal\search_api\Plugin\views\ResultRow;
+ use Drupal\views\Plugin\views\style\StylePluginBase;
+@@ -13,6 +12,7 @@ use Drupal\views\ViewExecutable;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Serializer\SerializerInterface;
++use Drupal\termwithuri_condition\Utils;
+ 
+ /**
+  * IIIF Search Result Annotations style plugin.
+@@ -90,11 +90,10 @@ protected $usesOptions = TRUE;
+    */
+   protected $serializer;
+ 
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, SerializerInterface $serializer, IslandoraUtils $utils, EntityTypeManagerInterface $entity_type_manager, Request $request) {
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, SerializerInterface $serializer, EntityTypeManagerInterface $entity_type_manager, Request $request) {
+     parent::__construct($configuration, $plugin_id, $plugin_definition);
+ 
+     $this->serializer = $serializer;
+-    $this->utils = $utils;
+     $this->entityTypeManager = $entity_type_manager;
+     $this->request = $request;
+   }
+@@ -108,7 +107,6 @@ protected $usesOptions = TRUE;
+       $plugin_id,
+       $plugin_definition,
+       $container->get('serializer'),
+-      $container->get('islandora.utils'),
+       $container->get('entity_type.manager'),
+       $container->get('request_stack')->getCurrentRequest(),
+     );
+@@ -147,7 +145,7 @@ protected $usesOptions = TRUE;
+     $json['@type'] = "sc:AnnotationList";
+ 
+     if (empty($this->canvasMediaUseTerm)) {
+-      $this->canvasMediaUseTerm = $this->utils->getTermForUri($this->options['canvas_media_term_uri']);
++      $this->canvasMediaUseTerm = Utils::getTermForUri($this->options['canvas_media_term_uri']);
+     }
+     $json['resources'] = [];
+     foreach ($this->view->result as $row) {
+@@ -169,7 +167,7 @@ protected $usesOptions = TRUE;
+       '#type' => 'entity_autocomplete',
+       '#target_type' => 'taxonomy_term',
+       '#title' => $this->t('Canvas media use term'),
+-      '#default_value' => !empty($this->options['canvas_media_term_uri']) ? $this->utils->getTermForUri($this->options['canvas_media_term_uri']) : '',
++      '#default_value' => !empty($this->options['canvas_media_term_uri']) ? Utils::getTermForUri($this->options['canvas_media_term_uri']) : '',
+       '#required' => TRUE,
+       '#description' => $this->t('Media Use term used by the media that will contain the canvas that the result snippets come from.'),
+     ];
+@@ -194,7 +192,7 @@ protected $usesOptions = TRUE;
+     $style_options = $form_state->getValue('style_options');
+     $tid = $style_options['canvas_media_term'];
+     $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($tid);
+-    $style_options['canvas_media_term_uri'] = $this->utils->getUriForTerm($term);
++    $style_options['canvas_media_term_uri'] = Utils::getUriForTerm($term);
+     $form_state->setValue('style_options', $style_options);
+     parent::submitOptionsForm($form, $form_state);
+   }
+@@ -211,7 +209,7 @@ protected $usesOptions = TRUE;
+     $item = $row->_item;
+      if ($extra = $item->getExtraData('islandora_hocr_highlights')) {
+       [$entity_placeholder, $entity_type, $entity_id, $language] = explode('/', str_replace(':', '/', $item->getId()));
+-      $mids = $this->utils->getMediaReferencingNodeAndTerm($item->getOriginalObject()->getEntity(), $this->canvasMediaUseTerm);
++      $mids = Utils::getMediaReferencingNodeAndTerm($item->getOriginalObject()->getEntity(), $this->canvasMediaUseTerm);
+       $mid = reset($mids);
+       $base_url = $this->request->getSchemeAndHttpHost();
+ 

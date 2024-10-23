@@ -1,0 +1,134 @@
+diff --git a/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php b/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php
+index 3f1250a..c13c4f6 100644
+--- a/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php
++++ b/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php
+@@ -10,8 +10,8 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\Utility\Token;
+ use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatterBase;
+-use Drupal\islandora\IslandoraUtils;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
+ 
+ /**
+  * Mirador FieldFormatter plugin.
+@@ -51,11 +51,11 @@ class MiradorImageFormatter extends ImageFormatterBase implements ContainerFacto
+   protected $routeMatch;
+ 
+   /**
+-   * Islandora utility functions.
++   * The entity type manager.
+    *
+-   * @var \Drupal\islandora\IslandoraUtils
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+    */
+-  protected $utils;
++  protected $entityTypeManager;
+ 
+   /**
+    * Constructs a StringFormatter instance.
+@@ -80,15 +80,15 @@ class MiradorImageFormatter extends ImageFormatterBase implements ContainerFacto
+    *   The token service.
+    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+    *   The route match.
+-   * @param \Drupal\islandora\IslandoraUtils $utils
+-   *   Islandora utils.
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
++   *   The entity type manager.
+    */
+-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, ConfigFactoryInterface $config_factory, Token $token, RouteMatchInterface $route_match, IslandoraUtils $utils) {
++  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, ConfigFactoryInterface $config_factory, Token $token, RouteMatchInterface $route_match, EntityTypeManagerInterface $entity_type_manager) {
+     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings, $config_factory);
+     $this->token = $token;
+     $this->routeMatch = $route_match;
+     $this->configFactory = $config_factory;
+-    $this->utils = $utils;
++    $this->entityTypeManager = $entity_type_manager;
+   }
+ 
+   /**
+@@ -106,7 +106,7 @@ class MiradorImageFormatter extends ImageFormatterBase implements ContainerFacto
+       $container->get('config.factory'),
+       $container->get('token'),
+       $container->get('current_route_match'),
+-      $container->get('islandora.utils')
++      $container->get('entity_type.manager')
+     );
+   }
+ 
+@@ -126,7 +126,7 @@ class MiradorImageFormatter extends ImageFormatterBase implements ContainerFacto
+     foreach ($files as $file) {
+       $cache_meta = CacheableMetadata::createFromObject($file);
+ 
+-      $medias = $this->utils->getReferencingMedia($file->id());
++      $medias = $this->getReferencingMedia($file->id());
+       $first_media = array_values($medias)[0];
+       $cache_meta->addCacheableDependency($first_media);
+       $node = $first_media->get('field_media_of')->entity;
+@@ -146,4 +146,66 @@ class MiradorImageFormatter extends ImageFormatterBase implements ContainerFacto
+     return $elements;
+   }
+ 
++  /**
++   * Gets Media that reference a File.
++   *
++   * @param int $fid
++   *   File id.
++   *
++   * @return \Drupal\media\MediaInterface[]
++   *   Array of media.
++   *
++   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
++   *   Calling getStorage() throws if the entity type doesn't exist.
++   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
++   *   Calling getStorage() throws if the storage handler couldn't be loaded.
++   */
++  public function getReferencingMedia($fid) {
++    // Get media fields that reference files.
++    $fields = $this->getReferencingFields('media', 'file');
++
++    // Process field names, stripping off 'media.' and appending 'target_id'.
++    $conditions = array_map(
++      function ($field) {
++        return ltrim($field, 'media.') . '.target_id';
++      },
++      $fields
++    );
++
++    // Query for media that reference this file.
++    $query = $this->entityTypeManager->getStorage('media')->getQuery();
++    $query->accessCheck(TRUE);
++    $group = $query->orConditionGroup();
++    foreach ($conditions as $condition) {
++      $group->condition($condition, $fid);
++    }
++    $query->condition($group);
++
++    return $this->entityTypeManager->getStorage('media')
++      ->loadMultiple($query->execute());
++  }
++
++  /**
++   * Get the fields on an entity of $entity_type that reference a $target_type.
++   *
++   * @param string $entity_type
++   *   Type of entity to search for.
++   * @param string $target_type
++   *   Type of entity the field references.
++   *
++   * @return array
++   *   Array of fields.
++   */
++  public function getReferencingFields($entity_type, $target_type) {
++    $fields = $this->entityTypeManager->getStorage('field_storage_config')
++      ->getQuery()
++      ->condition('entity_type', $entity_type)
++      ->condition('settings.target_type', $target_type)
++      ->execute();
++    if (!is_array($fields)) {
++      $fields = [$fields];
++    }
++    return $fields;
++  }
++
+ }
