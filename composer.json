@@ -333,7 +333,7 @@
             "citation_select.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/2.x/assets/patches/citation_select.patch"
          },
          "discoverygarden/islandora_hocr": {
-            "islandora_hocr_lite_1.patch": "assets/patches/islandora_hocr_lite_1.patch"
+            "islandora_hocr_lite_1.patch": "assets/patches/islandora_hocr_lite.patch"
          },
          "born-digital/islandora_iiif_hocr": {
             "islandora_iiif_hocr_lite.patch": "assets/patches/islandora_iiif_hocr_lite.patch"

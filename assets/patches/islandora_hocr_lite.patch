@@ -1,14 +1,13 @@
 diff --git a/islandora_hocr.info.yml b/islandora_hocr.info.yml
-index 1aca0f9..f5dc9e8 100644
+index 1aca0f9..598e167 100644
 --- a/islandora_hocr.info.yml
 +++ b/islandora_hocr.info.yml
-@@ -3,5 +3,4 @@ description: Adds hOCR functionality
- package: DGI Helpers
+@@ -4,4 +4,4 @@ package: DGI Helpers
  type: module
  core_version_requirement: ^9 || ^10
--dependencies:
+ dependencies:
 -  - islandora:islandora
-+dependencies:
++  - drupal:search_api_solr
 \ No newline at end of file
 diff --git a/src/Plugin/Action/HocrDerivative.php b/src/Plugin/Action/HocrDerivative.php
 deleted file mode 100644
