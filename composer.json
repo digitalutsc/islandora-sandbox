@@ -205,7 +205,7 @@
       "islandora/islandora_iiif": "*",
       "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
       "islandora_lite/islandora_search_processor": "^1.0.0-beta",
-      "islandora_lite/islandora_site_name": "^1.0.0-beta",
+      "islandora_lite/islandora_site_name": "^1.1",
       "islandora_lite/termwithuri_condition": "^1.0.0-beta",
       "library/masonry": "3.3.2",
       "library/pdf.js": "2.10.377",
@@ -263,7 +263,8 @@
       "post-update-cmd": [
          "@composer drupal:scaffold",
          "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-         "@patch-files"
+         "@patch-files",
+         "DrupalProject\\composer\\ScriptHandler::applyDrupalPatches"
       ],
       "patch-files": [
          "php -r \"copy('https://raw.githubusercontent.com/digitalutsc/islandora_lite_installation/main/templates/mods.html.twig', './web/modules/contrib/rest_oai_pmh/templates/mods.html.twig');\""
