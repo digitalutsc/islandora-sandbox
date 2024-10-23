@@ -8784,18 +8784,20 @@
         },
         {
             "name": "islandora/islandora_iiif",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_iiif.git",
-                "reference": "15b80ebf8610cf38e69a455aeb0fef7d351566a9"
+                "reference": "1.0.0"
             },
-            "default-branch": true,
-            "type": "drupal-module",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "time": "2024-07-11T14:30:34+00:00"
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/digitalutsc/islandora_iiif/archive/refs/tags/1.0.0.zip"
+            },
+            "require": {
+                "discoverygarden/islandora_hocr": "*"
+            },
+            "type": "drupal-module"
         },
         {
             "name": "islandora/jsonld",
