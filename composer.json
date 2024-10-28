@@ -72,42 +72,13 @@
          }
       },      
       {
-         "type": "package",
-         "package": {
-            "name": "discoverygarden/islandora_hocr",
-            "version": "v1.3.3",
-            "type": "drupal-module",
-            "source": {
-               "url": "https://github.com/discoverygarden/islandora_hocr.git",
-               "type": "git",
-               "reference": "v1.3.3"
-            },
-            "dist": {
-               "url": "https://github.com/discoverygarden/islandora_hocr/archive/refs/tags/v1.3.3.zip",
-               "type": "zip"
-            }
-         }
-      },
+         "type": "vcs",
+         "url": "https://github.com/discoverygarden/islandora_hocr"
+      }, 
       {
-         "type": "package",
-         "package": {
-            "name": "born-digital/islandora_iiif_hocr",
-            "version": "2.0.3",
-            "type": "drupal-module",
-            "source": {
-               "url": "https://github.com/born-digital/islandora_iiif_hocr.git",
-               "type": "git",
-               "reference": "2.0.3"
-            },
-            "require": {
-               "discoverygarden/islandora_hocr": "*"
-            },            
-            "dist": {
-               "url": "https://github.com/Born-Digital-US/islandora_iiif_hocr/archive/refs/tags/2.0.3.zip",
-               "type": "zip"
-            }
-         }
-      },      
+         "type": "vcs",
+         "url": "https://github.com/Born-Digital-US/islandora_iiif_hocr"
+      }, 
       {
          "type": "vcs",
          "url": "https://github.com/digitalutsc/facets_year_range"
@@ -216,8 +187,8 @@
       "islandora_lite/facets_year_range": "^1.0.0-beta",
       "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
       "drupal/islandora_mirador": "^2.3",
-      "discoverygarden/islandora_hocr": "v1.3.3",
-      "born-digital/islandora_iiif_hocr": "2.0.3",
+      "discoverygarden/islandora_hocr": "v1.3.4",
+      "born-digital/islandora_iiif_hocr": "2.0.6",
       "islandora/islandora_iiif": "^1",
       "islandora_lite/islandora_object_thumbnail": "^1.0.0-beta",
       "islandora_lite/islandora_search_processor": "^1.0.0-beta",
