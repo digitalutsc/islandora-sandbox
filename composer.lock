@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "224100e677c24e27dfcbfb51c7300e4f",
+    "content-hash": "ce7a4945809a02175b29b4a7aebf54f2",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -114,54 +114,6 @@
             "time": "2023-11-14T13:51:46+00:00"
         },
         {
-            "name": "audiolabs/bibtexparser",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/audiolabs/bibtexparser.git",
-                "reference": "01dd501db831ed7f10e9656e83f9895dab26a9da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/audiolabs/bibtexparser/zipball/01dd501db831ed7f10e9656e83f9895dab26a9da",
-                "reference": "01dd501db831ed7f10e9656e83f9895dab26a9da",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "AudioLabs": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nils Werner",
-                    "email": "nils.werner@audiolabs-erlangen.de",
-                    "homepage": "http://www.audiolabs-erlangen.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Bibtex parser for PHP 5.3",
-            "homepage": "http://github.com/alabs/bibtexparser",
-            "keywords": [
-                "bibtex",
-                "latex",
-                "parsing"
-            ],
-            "support": {
-                "issues": "https://github.com/audiolabs/bibtexparser/issues",
-                "source": "https://github.com/audiolabs/bibtexparser/tree/master"
-            },
-            "time": "2020-08-24T07:09:27+00:00"
-        },
-        {
             "name": "born-digital/islandora_iiif_hocr",
             "version": "2.0.6",
             "source": {
@@ -264,63 +216,6 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
-        },
-        {
-            "name": "caseyamcl/php-marc21",
-            "version": "v1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/caseyamcl/php-marc21.git",
-                "reference": "807c1920d729d39fe49a07fdb10427caccf376c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caseyamcl/php-marc21/zipball/807c1920d729d39fe49a07fdb10427caccf376c0",
-                "reference": "807c1920d729d39fe49a07fdb10427caccf376c0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0|^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PhpMarc": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Casey McLaughlin",
-                    "email": "caseyamcl@gmail.com",
-                    "homepage": "https://caseymclaughlin.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Grant Gingell",
-                    "homepage": "http://www.grantgingell.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "MARC Record handling tool for PHP",
-            "homepage": "https://github.com/caseyamc/php-marc21",
-            "keywords": [
-                "conversion",
-                "format",
-                "library",
-                "marc"
-            ],
-            "support": {
-                "issues": "https://github.com/caseyamcl/php-marc21/issues",
-                "source": "https://github.com/caseyamcl/php-marc21/tree/master"
-            },
-            "time": "2020-08-20T21:08:48+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",
@@ -1876,16 +1771,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.3.3",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "b337726451f5d530df338fc7f68dee8781b49779"
+                "reference": "0ea965320cec355dba75031c1b23d4c78362e3ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b337726451f5d530df338fc7f68dee8781b49779",
-                "reference": "b337726451f5d530df338fc7f68dee8781b49779",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/0ea965320cec355dba75031c1b23d4c78362e3ff",
+                "reference": "0ea965320cec355dba75031c1b23d4c78362e3ff",
                 "shasum": ""
             },
             "require": {
@@ -1899,12 +1794,11 @@
             "require-dev": {
                 "doctrine/coding-standard": "^12",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "1.11.1",
+                "phpstan/phpstan": "1.12.7",
                 "phpstan/phpstan-phpunit": "^1",
                 "phpstan/phpstan-strict-rules": "^1.1",
-                "phpunit/phpunit": "^8.5 || ^9.5",
-                "symfony/cache": "^4.4 || ^5.4 || ^6.0",
-                "vimeo/psalm": "4.30.0 || 5.24.0"
+                "phpunit/phpunit": "^8.5.38 || ^9.5",
+                "symfony/cache": "^4.4 || ^5.4 || ^6.0 || ^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1953,7 +1847,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.3.3"
+                "source": "https://github.com/doctrine/persistence/tree/3.4.0"
             },
             "funding": [
                 {
@@ -1969,7 +1863,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-20T10:14:30+00:00"
+            "time": "2024-10-30T19:48:12+00:00"
         },
         {
             "name": "drupal/ableplayer",
@@ -2570,118 +2464,31 @@
             }
         },
         {
-            "name": "drupal/bibcite",
-            "version": "3.0.0-beta4",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/bibcite.git",
-                "reference": "3.0.0-beta4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bibcite-3.0.0-beta4.zip",
-                "reference": "3.0.0-beta4",
-                "shasum": "169de8507e537e2498b7eadafda2b9fd78dfbd12"
-            },
-            "require": {
-                "adci/full-name-parser": "^0.2.4",
-                "audiolabs/bibtexparser": "^1.0",
-                "caseyamcl/php-marc21": "~1.0",
-                "drupal/core": "^8.8 || ^9 || ^10",
-                "drupal/entity": "^1.0",
-                "drupal/token": "^1.0",
-                "seboettg/citeproc-php": "^2.6",
-                "technosophos/libris": "~2.0"
-            },
-            "require-dev": {
-                "drupal/bibcite_entity": "*",
-                "drupal/entity": "*",
-                "drupal/token": "*"
-            },
-            "suggest": {
-                "drupal/bibcite_altmetric": "Adds Altmetric badges to BibCite reference entities",
-                "drupal/bibcite_crossref": "Provides DOI lookup functionality",
-                "drupal/bibcite_migrate": "Migrate your bibliographic data from the Bibliography (biblio) module",
-                "drupal/bibcite_pubmed": "Provides PubMed import and lookup functionality",
-                "drupal/metatag_google_scholar": "Provides number of meta tags to help with indexing of scholarly content/articles in Google Scholar"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.0.0-beta4",
-                    "datestamp": "1714122585",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "AardWolf",
-                    "homepage": "https://www.drupal.org/user/3540355"
-                },
-                {
-                    "name": "adcillc",
-                    "homepage": "https://www.drupal.org/user/366450"
-                },
-                {
-                    "name": "adci_contributor",
-                    "homepage": "https://www.drupal.org/user/1830536"
-                },
-                {
-                    "name": "antongp",
-                    "homepage": "https://www.drupal.org/user/1060446"
-                },
-                {
-                    "name": "hxdef",
-                    "homepage": "https://www.drupal.org/user/2622115"
-                },
-                {
-                    "name": "usdv",
-                    "homepage": "https://www.drupal.org/user/2476206"
-                }
-            ],
-            "description": "Working with bibliographic data",
-            "homepage": "https://www.drupal.org/project/bibcite",
-            "keywords": [
-                "Bibliography",
-                "Drupal"
-            ],
-            "support": {
-                "source": "https://git.drupalcode.org/project/bibcite",
-                "issues": "https://www.drupal.org/project/issues/bibcite"
-            }
-        },
-        {
             "name": "drupal/citation_select",
-            "version": "1.0.0-beta5",
+            "version": "2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/citation_select.git",
-                "reference": "1.0.0-beta5"
+                "reference": "2.0.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/citation_select-1.0.0-beta5.zip",
-                "reference": "1.0.0-beta5",
-                "shasum": "974d26b8cd9508de9a615accf03720fcf4adfac0"
+                "url": "https://ftp.drupal.org/files/projects/citation_select-2.0.0-beta1.zip",
+                "reference": "2.0.0-beta1",
+                "shasum": "90d2f6a18187cb35fc459a4d1ea24ad58ee936ec"
             },
             "require": {
-                "drupal/bibcite": "^3.0@beta",
+                "adci/full-name-parser": "^0.2.4",
                 "drupal/core": "^8.8 || ^9 || ^10",
                 "drupal/token": "^1.9",
-                "professional-wiki/edtf": "~2.0"
+                "professional-wiki/edtf": "~2.0",
+                "seboettg/citeproc-php": "^2.6"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta5",
-                    "datestamp": "1698419516",
+                    "version": "2.0.0-beta1",
+                    "datestamp": "1711983993",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -4823,57 +4630,6 @@
             }
         },
         {
-            "name": "drupal/variationcache",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/variationcache.git",
-                "reference": "8.x-1.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/variationcache-8.x-1.5.zip",
-                "reference": "8.x-1.5",
-                "shasum": "6165baee8c6fe5a7773f3499896e8fb464607a32"
-            },
-            "require": {
-                "drupal/core": "^9.5 || ^10"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.5",
-                    "datestamp": "1705485386",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Kristiaan Van den Eynde",
-                    "homepage": "https://www.drupal.org/u/kristiaanvandeneynde",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Brad Jones",
-                    "homepage": "https://www.drupal.org/u/bradjones1",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "This project provides VariationCache, a redirect-aware caching implementation.",
-            "homepage": "http://drupal.org/project/variationcache",
-            "support": {
-                "source": "https://git.drupalcode.org/project/variationcache",
-                "issues": "https://drupal.org/project/issues/variationcache"
-            }
-        },
-        {
             "name": "drupal/groupmedia",
             "version": "4.0.3",
             "source": {
@@ -5974,17 +5730,17 @@
         },
         {
             "name": "drupal/media_thumbnails",
-            "version": "1.0.0-beta3",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/media_thumbnails.git",
-                "reference": "8.x-1.0-beta3"
+                "reference": "2.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/media_thumbnails-8.x-1.0-beta3.zip",
-                "reference": "8.x-1.0-beta3",
-                "shasum": "e37f26545c101a15601c09f6bc34430e2f45a656"
+                "url": "https://ftp.drupal.org/files/projects/media_thumbnails-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "bf8fed213de635be2b90c8a355a22aa7d8fb8b91"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11"
@@ -5992,11 +5748,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta3",
-                    "datestamp": "1726479922",
+                    "version": "2.0.0",
+                    "datestamp": "1727345523",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -6190,32 +5946,29 @@
         },
         {
             "name": "drupal/media_thumbnails_video",
-            "version": "2.0.0",
+            "version": "dev-2.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/media_thumbnails_video.git",
-                "reference": "2.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/media_thumbnails_video-2.0.0.zip",
-                "reference": "2.0.0",
-                "shasum": "e65879c2102dd7a89f361e8a6cf9efdcf43720d5"
+                "reference": "7eb3fa1d1564be6f2ceecfd2cdb09e27d93cfaf5"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10",
-                "drupal/media_thumbnails": "^1.0",
+                "drupal/media_thumbnails": ">=1.0",
                 "ext-gd": "*",
                 "php-ffmpeg/php-ffmpeg": ">=0.14.0"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                },
                 "drupal": {
-                    "version": "2.0.0",
-                    "datestamp": "1672674374",
+                    "version": "2.0.x-dev",
+                    "datestamp": "1730371758",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -7821,7 +7574,7 @@
                     "homepage": "https://www.drupal.org/user/48424"
                 },
                 {
-                    "name": "KarlShea",
+                    "name": "karlshea",
                     "homepage": "https://www.drupal.org/user/294283"
                 },
                 {
@@ -8906,16 +8659,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/digitalutsc/islandora_iiif.git",
-                "reference": "1.0.0"
+                "reference": "15b80ebf8610cf38e69a455aeb0fef7d351566a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/digitalutsc/islandora_iiif/archive/refs/tags/1.0.0.zip"
+                "url": "https://api.github.com/repos/digitalutsc/islandora_iiif/zipball/15b80ebf8610cf38e69a455aeb0fef7d351566a9",
+                "reference": "15b80ebf8610cf38e69a455aeb0fef7d351566a9",
+                "shasum": ""
             },
-            "require": {
-                "discoverygarden/islandora_hocr": "*"
+            "type": "drupal-module",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "support": {
+                "source": "https://github.com/digitalutsc/islandora_iiif/tree/1.0.0",
+                "issues": "https://github.com/digitalutsc/islandora_iiif/issues"
             },
-            "type": "drupal-module"
+            "time": "2024-07-11T14:30:34+00:00"
         },
         {
             "name": "islandora/views_nested_details",
@@ -9195,30 +8955,30 @@
         },
         {
             "name": "laminas/laminas-stdlib",
-            "version": "3.19.0",
+            "version": "3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stdlib.git",
-                "reference": "6a192dd0882b514e45506f533b833b623b78fff3"
+                "reference": "8974a1213be42c3e2f70b2c27b17f910291ab2f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/6a192dd0882b514e45506f533b833b623b78fff3",
-                "reference": "6a192dd0882b514e45506f533b833b623b78fff3",
+                "url": "https://api.github.com/repos/laminas/laminas-stdlib/zipball/8974a1213be42c3e2f70b2c27b17f910291ab2f4",
+                "reference": "8974a1213be42c3e2f70b2c27b17f910291ab2f4",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "conflict": {
                 "zendframework/zend-stdlib": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "^2.5",
-                "phpbench/phpbench": "^1.2.15",
-                "phpunit/phpunit": "^10.5.8",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.20.0"
+                "laminas/laminas-coding-standard": "^3.0",
+                "phpbench/phpbench": "^1.3.1",
+                "phpunit/phpunit": "^10.5.38",
+                "psalm/plugin-phpunit": "^0.19.0",
+                "vimeo/psalm": "^5.26.1"
             },
             "type": "library",
             "autoload": {
@@ -9250,7 +9010,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-01-19T12:39:49+00:00"
+            "time": "2024-10-29T13:46:07+00:00"
         },
         {
             "name": "league/container",
@@ -11964,32 +11724,31 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v7.1.6",
+            "version": "v6.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "567ef6de47fdcba56eb6c0b344b857d1fce1cce0"
+                "reference": "8079a3006f53805e7771d086b62428b7cac481dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/567ef6de47fdcba56eb6c0b344b857d1fce1cce0",
-                "reference": "567ef6de47fdcba56eb6c0b344b857d1fce1cce0",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/8079a3006f53805e7771d086b62428b7cac481dd",
+                "reference": "8079a3006f53805e7771d086b62428b7cac481dd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "psr/cache": "^2.0|^3.0",
                 "psr/log": "^1.1|^2|^3",
                 "symfony/cache-contracts": "^2.5|^3",
-                "symfony/deprecation-contracts": "^2.5|^3.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/var-exporter": "^6.4|^7.0"
+                "symfony/var-exporter": "^6.3.6|^7.0"
             },
             "conflict": {
-                "doctrine/dbal": "<3.6",
-                "symfony/dependency-injection": "<6.4",
-                "symfony/http-kernel": "<6.4",
-                "symfony/var-dumper": "<6.4"
+                "doctrine/dbal": "<2.13.1",
+                "symfony/dependency-injection": "<5.4",
+                "symfony/http-kernel": "<5.4",
+                "symfony/var-dumper": "<5.4"
             },
             "provide": {
                 "psr/cache-implementation": "2.0|3.0",
@@ -11998,15 +11757,15 @@
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
-                "doctrine/dbal": "^3.6|^4",
+                "doctrine/dbal": "^2.13.1|^3|^4",
                 "predis/predis": "^1.1|^2.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
-                "symfony/config": "^6.4|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
-                "symfony/filesystem": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4|^7.0",
-                "symfony/messenger": "^6.4|^7.0",
-                "symfony/var-dumper": "^6.4|^7.0"
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/filesystem": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/var-dumper": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -12041,7 +11800,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v7.1.6"
+                "source": "https://github.com/symfony/cache/tree/v6.4.13"
             },
             "funding": [
                 {
@@ -12057,7 +11816,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-25T15:39:55+00:00"
+            "time": "2024-10-25T15:39:47+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -14873,54 +14632,6 @@
             "time": "2024-09-25T14:18:03+00:00"
         },
         {
-            "name": "technosophos/libris",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/technosophos/LibRIS.git",
-                "reference": "5b6628ece0e57e90bd54f3b2d8de922dc4cc662c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/technosophos/LibRIS/zipball/5b6628ece0e57e90bd54f3b2d8de922dc4cc662c",
-                "reference": "5b6628ece0e57e90bd54f3b2d8de922dc4cc662c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "LibRIS": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT or GPLv2"
-            ],
-            "authors": [
-                {
-                    "name": "M Butcher",
-                    "homepage": "http://technosophos.com"
-                }
-            ],
-            "description": "An RIS parser. RIS is a format for reference metadata.",
-            "homepage": "https://github.com/technosophos/LibRIS",
-            "keywords": [
-                "Bibliography",
-                "File parser",
-                "RIS",
-                "Reference"
-            ],
-            "support": {
-                "issues": "https://github.com/technosophos/LibRIS/issues",
-                "source": "https://github.com/technosophos/LibRIS/tree/master"
-            },
-            "abandoned": true,
-            "time": "2012-03-14T16:36:15+00:00"
-        },
-        {
             "name": "twig/twig",
             "version": "v3.14.0",
             "source": {
@@ -15439,7 +15150,6 @@
         "drupal/fits": 15,
         "drupal/flysystem": 5,
         "drupal/fullcalendar_solr": 10,
-        "drupal/media_thumbnails": 10,
         "drupal/media_thumbnails_jp2": 10,
         "drupal/media_thumbnails_pdf": 10,
         "drupal/media_thumbnails_tiff": 10,
@@ -15454,6 +15164,6 @@
     "platform": {
         "php": "^7.4 || ^8"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

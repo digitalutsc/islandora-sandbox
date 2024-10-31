@@ -12,7 +12,6 @@ module:
   automated_cron: 0
   basic_auth: 0
   better_social_sharing_buttons: 0
-  bibcite: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -127,11 +126,9 @@ module:
   text: 0
   token: 0
   toolbar: 0
-  tour: 0
   triplestore_indexer: 0
   update: 0
   user: 0
-  variationcache: 0
   views_bulk_operations: 0
   views_field_view: 0
   views_flipped_table: 0
