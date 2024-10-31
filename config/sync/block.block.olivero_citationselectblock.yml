@@ -1,0 +1,35 @@
+uuid: a4c0e00d-7ebb-4175-bfdd-fbc52ae65f6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - citation_select
+    - node
+    - term_condition
+  theme:
+    - olivero
+id: olivero_citationselectblock
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: citation_select_block
+settings:
+  id: citation_select_block
+  label: 'Citation Select Block'
+  label_display: visible
+  provider: citation_select
+visibility:
+  term:
+    id: term
+    negate: true
+    context_mapping: {  }
+    term_uuids:
+      - 5767e479-0010-4c56-847d-1304038a9b8c
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      islandora_object: islandora_object
