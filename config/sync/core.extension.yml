@@ -126,6 +126,7 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  tour: 0
   triplestore_indexer: 0
   update: 0
   user: 0
