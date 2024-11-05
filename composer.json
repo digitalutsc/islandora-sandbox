@@ -183,7 +183,6 @@
       "library/timeline3": "3.8.18",
       "mjordan/islandora_workbench_integration": "dev-main",
       "vlucas/phpdotenv": "^2.4",
-      "webmozart/path-util": "^2.3",
       "wikimedia/composer-merge-plugin": "^2.0",
       "zaporylie/composer-drupal-optimizations": "^1.2"
    },
@@ -299,13 +298,13 @@
            "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"
          },
          "discoverygarden/islandora_hocr": {
-            "islandora_hocr_lite_1.patch": "assets/patches/islandora_hocr_lite.patch"
+            "islandora_hocr_lite_1.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/refs/heads/2.x/assets/patches/islandora_hocr_lite.patch"
          },
          "born-digital/islandora_iiif_hocr": {
-            "islandora_iiif_hocr_lite.patch": "assets/patches/islandora_iiif_hocr_lite.patch"
+            "islandora_iiif_hocr_lite.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/refs/heads/2.x/assets/patches/islandora_iiif_hocr_lite.patch"
          },
          "drupal/islandora_mirador": {
-            "islandora_mirador_lite.patch": "assets/patches/islandora_mirador_lite.patch"
+            "islandora_mirador_lite.patch": "https://raw.githubusercontent.com/digitalutsc/islandora-lite-site/refs/heads/2.x/assets/patches/islandora_mirador_lite.patch"
          },
          "drupal/facets": {
             "facets.patch": "https://www.drupal.org/files/issues/2024-08-28/facets-2937191-83-no-tests.patch"
