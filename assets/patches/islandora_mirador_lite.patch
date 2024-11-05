@@ -1,3 +1,18 @@
+diff --git a/composer.json b/composer.json
+index d02c302..86a53de 100755
+--- a/composer.json
++++ b/composer.json
+@@ -13,9 +13,7 @@
+   "replace": {
+     "islandora/islandora_mirador": "self.version"
+   },
+-  "require": {
+-    "drupal/islandora": "^2"
+-  },
++  "require": {},
+   "conflict": {
+     "drupal/core": "<=8",
+     "islandora/islandora_defaults": "<3"
 diff --git a/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php b/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php
 index 3f1250a..c13c4f6 100644
 --- a/src/Plugin/Field/FieldFormatter/MiradorImageFormatter.php
