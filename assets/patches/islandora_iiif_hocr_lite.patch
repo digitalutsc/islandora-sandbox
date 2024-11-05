@@ -1,3 +1,15 @@
+diff --git a/composer.json b/composer.json
+index 610317f..71fda67 100644
+--- a/composer.json
++++ b/composer.json
+@@ -11,7 +11,6 @@
+       "issues": "https://github.com/Born-Digital-US/islandora_iiif_hocr/issues"
+     },
+     "require": {
+-      "drupal/islandora": "*",
+       "discoverygarden/islandora_hocr": "*"
+     }
+   }
 diff --git a/config/optional/views.view.search_in_hocr.yml b/config/optional/views.view.search_in_hocr.yml
 index e254c37..0bc69df 100644
 --- a/config/optional/views.view.search_in_hocr.yml
