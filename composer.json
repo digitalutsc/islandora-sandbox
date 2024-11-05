@@ -136,7 +136,7 @@
       "drupal/geolocation": "^3.12",
       "drupal/json_field": "^1.3",
       "drupal/jwt": "^2.0",
-      "drupal/matomo": "1.22",
+      "drupal/matomo": "1.23",
       "drupal/media_file_delete": "^1.3",
       "drupal/media_library_edit": "^3.0",
       "drupal/media_thumbnails": "2.0",
@@ -294,9 +294,6 @@
          },
          "drupal/file_entity": {
             "override_file_access.patch": "https://raw.githubusercontent.com/digitalutsc/override_permission_file_entity/main/override_file_access.patch"
-         },
-         "drupal/matomo": {
-            "matomo.patch": "https://raw.githubusercontent.com/digitalutsc/dsu_sites_config/main/all/patches/matomo.patch"
          },
          "drupal/better_social_sharing_buttons":{
            "custom_link.patch": "https://www.drupal.org/files/issues/2023-11-09/custom_link_4-0-7-2.patch"

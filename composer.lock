@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f80887ee79cec27ededf7e912ea8ede2",
+    "content-hash": "fd075fe3e7d36326fb529a340073d99a",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -323,16 +323,16 @@
         },
         {
             "name": "citation-style-language/styles",
-            "version": "v0.0.561",
+            "version": "v0.0.564",
             "source": {
                 "type": "git",
                 "url": "https://github.com/citation-style-language/styles.git",
-                "reference": "075c2aa09c3267e9c0e200f362d522d4e282de6c"
+                "reference": "f720e365dbd6a529997e39adab58e2eca6276b24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/citation-style-language/styles/zipball/075c2aa09c3267e9c0e200f362d522d4e282de6c",
-                "reference": "075c2aa09c3267e9c0e200f362d522d4e282de6c",
+                "url": "https://api.github.com/repos/citation-style-language/styles/zipball/f720e365dbd6a529997e39adab58e2eca6276b24",
+                "reference": "f720e365dbd6a529997e39adab58e2eca6276b24",
                 "shasum": ""
             },
             "type": "library",
@@ -350,7 +350,7 @@
             "homepage": "http://citationstyles.org/",
             "support": {
                 "issues": "https://github.com/citation-style-language/styles/issues",
-                "source": "https://github.com/citation-style-language/styles/tree/v0.0.561"
+                "source": "https://github.com/citation-style-language/styles/tree/v0.0.564"
             },
             "funding": [
                 {
@@ -358,7 +358,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-18T18:10:44+00:00"
+            "time": "2024-10-30T16:10:40+00:00"
         },
         {
             "name": "composer/installers",
@@ -5571,17 +5571,17 @@
         },
         {
             "name": "drupal/matomo",
-            "version": "1.22.0",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/matomo.git",
-                "reference": "8.x-1.22"
+                "reference": "8.x-1.23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/matomo-8.x-1.22.zip",
-                "reference": "8.x-1.22",
-                "shasum": "b41bb83d9c0c6f8c27f72f6b1b62f691dab65a5d"
+                "url": "https://ftp.drupal.org/files/projects/matomo-8.x-1.23.zip",
+                "reference": "8.x-1.23",
+                "shasum": "c2dbf12878388c5859e64f1e74a9ca5110d1623f"
             },
             "require": {
                 "drupal/core": "^9.0 || ^10"
@@ -5597,8 +5597,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.22",
-                    "datestamp": "1691004328",
+                    "version": "8.x-1.23",
+                    "datestamp": "1700936102",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
