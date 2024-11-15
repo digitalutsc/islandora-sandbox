@@ -168,7 +168,7 @@
       "drupal/jsonld": "^3.0",
       "islandora/views_nested_details": "^1.0.0-beta",
       "islandora_lite/ableplayer_extend": "^1.0.0-beta",
-      "islandora_lite/facets_year_range": "^1.0.0-beta",
+      "islandora_lite/facets_year_range": "1.0.1",
       "islandora_lite/islandora_breadcrumbs": "^1.0.0-beta",
       "drupal/islandora_mirador": "^2.3",
       "discoverygarden/islandora_hocr": "v1.3.4",
