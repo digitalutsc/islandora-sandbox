@@ -1115,7 +1115,6 @@ display:
           title: ''
           default_argument_type: node
           default_argument_options: {  }
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -2265,7 +2264,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set host =  url('<front>')|first|raw|replace({ 'https:': \"\", '/': \"\" })|replace({ 'http:': \"\", '/': \"\" }) %}\r\n<a href=\"/oai/request?identifier=oai%3A{{ host }}%3Anode-{{ nid }}&metadataPrefix=mods&verb=GetRecord\">Display MODS Record</a><br> \r\n<a href=\"/oai/request?identifier=oai%3A{{ host }}%3Anode-{{ nid }}&metadataPrefix=oai_dc&verb=GetRecord\">Display DC Record</a>"
+            text: "{% set host =  url('<front>')|first|raw|replace({ 'https:': \"\", '/': \"\" })|replace({ 'http:': \"\", '/': \"\" }) %}\r\n<a href=\"/oai/request?identifier=oai%3A{{ host }}%3Anode-{{ nid }}&metadataPrefix=mods&verb=GetRecord\">Display MODS Record</a><br> \r\n<a href=\"/oai/request?identifier=oai%3A{{ host }}%3Anode-{{ nid }}&metadataPrefix=oai_dc&verb=GetRecord\">Display DC Record</a><br>\r\n<a href=\"?_format=jsonld\">Display JSON-LD</a>"
             make_link: false
             path: ''
             absolute: false
