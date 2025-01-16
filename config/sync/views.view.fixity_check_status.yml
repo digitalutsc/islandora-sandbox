@@ -5,6 +5,8 @@ dependencies:
   module:
     - file
     - user
+    - dgi_fixity
+
 _core:
   default_config_hash: yfMpvPmmKtExQfDaHdeOs7YEd63-16z7fR6bBQyUBE0
 id: fixity_check_status

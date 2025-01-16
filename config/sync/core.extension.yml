@@ -136,7 +136,7 @@ module:
   views_nested_details: 0
   views_timelinejs: 0
   views_ui: 0
-  fixity: 0
+  dgi_fixity: 0
   content_translation: 10
   views: 10
   minimal: 1000
