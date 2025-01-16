@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - dgi_fixity
     - file
     - user
 _core:
