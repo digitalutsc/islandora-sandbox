@@ -147,3 +147,257 @@ index 3f1250a..c13c4f6 100644
 +  }
 +
  }
+diff --git a/islandora_mirador.module b/islandora_mirador.module
+index c1a8bbe..ca18d40 100644
+--- a/islandora_mirador.module
++++ b/islandora_mirador.module
+@@ -35,6 +35,19 @@ function islandora_mirador_theme() {
+ function template_preprocess_mirador(&$variables) {
+   $variables['mirador_view_id'] = Html::getUniqueId($variables['mirador_view_id']);
+ 
++  // For dsu-utsc.
++  if (!empty(\Drupal::hasService('jwt.authentication.jwt'))) {
++    $jwtService = \Drupal::service('jwt.authentication.jwt');
++    $token = $jwtService->generateToken();
++
++    // Attach the valid token as a Drupal setting
++    $variables['#attached']['drupalSettings']['token'] = $token;
++
++    // Add cache metadata to limit the cache lifetime
++    $variables['#cache']['max-age'] = 3600; // 1 hour
++    $variables['#cache']['tags'][] = 'jwt_token'; // Add a cache tag to invalidate the cache when the token changes
++  }
++
+   /**
+    * @var \Drupal\islandora_mirador\IslandoraMiradorPluginManager
+    */
+diff --git a/islandora_mirador.routing.yml b/islandora_mirador.routing.yml
+index 9d27632..c377ef8 100644
+--- a/islandora_mirador.routing.yml
++++ b/islandora_mirador.routing.yml
+@@ -5,3 +5,9 @@ islandora_mirador.miradorconfig:
+     _title: 'Mirador Settings'
+   requirements:
+     _permission: 'administer site configuration'
++islandora_mirador.service_worker:
++  path: '/islandora_mirador_service_worker'
++  defaults: 
++    _controller: '\Drupal\islandora_mirador\Controller\ServiceWorkerController::serve' 
++  requirements: 
++    _permission: 'access content'
+diff --git a/js/mirador_viewer.js b/js/mirador_viewer.js
+index c520e40..2f4f33d 100644
+--- a/js/mirador_viewer.js
++++ b/js/mirador_viewer.js
+@@ -5,33 +5,96 @@
+  * Displays Mirador viewer.
+  */
+ (function (Drupal, once) {
+-    'use strict';
++  'use strict';
+ 
+-    /**
+-     * Initialize the Mirador Viewer.
+-     */
+-    Drupal.behaviors.Mirador = {
+-        attach: function (context, settings) {
+-            Drupal.IslandoraMirador = Drupal.IslandoraMirador || {}
+-            Drupal.IslandoraMirador.instances = Drupal.IslandoraMirador.instances || {}
+-            Object.entries(settings.mirador.viewers).forEach(entry => {
+-              const [base, values] = entry;
+-              once('mirador-viewer', base, context).forEach(() =>
+-                // save the mirador instance so other modules can interact
+-                // with the store/actions at e.g. Drupal.IslandoraMirador.instances["#mirador-xyz"].store
+-                Drupal.IslandoraMirador.instances[base] = Mirador.viewer(values, window.miradorPlugins || {})
+-              );
+-            });
+-        },
+-        detach: function (context, settings) {
+-            Object.entries(settings.mirador.viewers).forEach(entry => {
+-              const [base, ] = entry;
+-              const removed = once.remove('mirador-viewer', base, context);
+-              if (removed.length > 0) {
+-                delete Drupal.IslandoraMirador.instances[base];
++  /**
++   * Initialize the Mirador Viewer.
++   */
++  Drupal.behaviors.Mirador = {
++      attach: function (context, settings) {
++          Drupal.IslandoraMirador = Drupal.IslandoraMirador || {}
++          Drupal.IslandoraMirador.instances = Drupal.IslandoraMirador.instances || {}
++          Object.entries(settings.mirador.viewers).forEach(entry => {
++            const [base, values] = entry;
++            once('mirador-viewer', base, context, settings).forEach(() => {
++              if (settings.token !== undefined) {
++                values["resourceHeaders"] = {
++                  'Authorization': 'Bearer '+ settings.token,
++                  'token': settings.token
++                };
++                values["requestPipeline"] = [
++                  (url, options) => ({  ...options, headers: {
++                    "Accept": 'application/ld+json;profile="http://iiif.io/api/presentation/3/context.json"',
++                    'Authorization': 'Bearer '+ settings.token,
++                    'token': settings.token
++                  }})
++                ];
++                values["osdConfig"] = {
++                  "loadTilesWithAjax": true,
++                  "ajaxHeaders": {
++                    'Authorization': 'Bearer '+ settings.token,
++                    'token': settings.token
++                  }
++                };
++                values["requests"] = {
++                  preprocessors: [ // Functions that receive HTTP requests and manipulate them (e.g. to add headers)
++                    // rewrite all info.json requests to add the text/json request header
++                    (url, options) => (url.match('info.json') && { ...options, headers: {
++                      'Authorization': 'Bearer '+ settings.token,
++                      'token': settings.token
++                    }})
++                  ],
++                };
+               }
++              Drupal.IslandoraMirador.instances[base] = Mirador.viewer(values, window.miradorPlugins || {})
+             });
+-        }
+-    };
++          });
++
++          if (settings.token !== undefined) {
++              if ('serviceWorker' in navigator) {
++                // Unregister the existing service worker
++                navigator.serviceWorker.getRegistrations()
++                  .then(registrations => {
++                    registrations.forEach(registration => {
++                      var scope_url = window.location.protocol + "//" + window.location.hostname + "/";
++                      if (registration.scope === scope_url
++                            && registration.waiting != null && registration.waiting.scriptURL.includes('islandora_mirador_service_worker')) {
++                         registration.unregister().then((boolean) => {
++                            // if boolean = true, unregister is successful
++                            if (boolean == true)
++                               console.log("unregister successfully ");
++                         });
++                      }
++                    });
++                  })
++                  .catch(err => {
++                    console.error('Error unregistering service worker:', err);
++                  })
++                  .finally(() => {
++                    // Register the new service worker with the token
++                    window.addEventListener('load', () => {
++                      navigator.serviceWorker
++                        .register('/islandora_mirador_service_worker?token=' + settings.token, { scope: '/' })
++                        .then(registration => {
++                          console.log('ServiceWorker registration successful with scope: ', registration.scope);
++                        })
++                        .catch(err => {
++                          console.log('ServiceWorker registration failed: ', err);
++                        });
++                    });
++                  });
++              }
++           }
++      },
++      detach: function (context, settings) {
++          Object.entries(settings.mirador.viewers).forEach(entry => {
++            const [base, ] = entry;
++            const removed = once.remove('mirador-viewer', base, context);
++            if (removed.length > 0) {
++              delete Drupal.IslandoraMirador.instances[base];
++            }
++          });
++      }
++  };
+ 
+ })(Drupal, once);
+diff --git a/js/service_worker.js b/js/service_worker.js
+new file mode 100644
+index 0000000..0804b3c
+--- /dev/null
++++ b/js/service_worker.js
+@@ -0,0 +1,20 @@
++self.addEventListener('activate', function (event) {
++  return self.clients.claim();
++});
++
++self.addEventListener('fetch', function (event) {
++  if (event.request.destination === "image" && new URL(event.request.url).pathname.startsWith('/iiif/') && new URL(location).searchParams.has('token')) {
++    var token = new URL(location).searchParams.get('token');
++    event.respondWith(
++      fetch(event.request, {
++        headers: {
++          'Authorization': 'Bearer ' + token,
++          'token': token
++        },
++        mode: "cors",
++        credentials: "omit"
++        //credentials: "include"
++      })
++    );
++  }
++});
+diff --git a/src/Controller/ServiceWorkerController.php b/src/Controller/ServiceWorkerController.php
+new file mode 100644
+index 0000000..fb677b6
+--- /dev/null
++++ b/src/Controller/ServiceWorkerController.php
+@@ -0,0 +1,58 @@
++<?php
++
++namespace Drupal\islandora_mirador\Controller;
++
++use Drupal\Core\Controller\ControllerBase;
++use Drupal\Core\Extension\ExtensionPathResolver;
++use Symfony\Component\DependencyInjection\ContainerInterface;
++use Symfony\Component\HttpFoundation\BinaryFileResponse;
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
++
++/**
++ * A controller for the Service Worker.
++ */
++class ServiceWorkerController extends ControllerBase {
++
++  /**
++   * The extension path resolver service.
++   *
++   * @var \Drupal\Core\Extension\ExtensionPathResolver
++   */
++  protected $extensionPathResolver;
++
++  /**
++   * Constructs a ServiceWorkerController object.
++   *
++   * @param \Drupal\Core\Extension\ExtensionPathResolver $extension_path_resolver
++   *   The extension path resolver service.
++   */
++  public function __construct(ExtensionPathResolver $extension_path_resolver) {
++    $this->extensionPathResolver = $extension_path_resolver;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container) {
++    return new static(
++      $container->get('extension.path.resolver')
++    );
++  }
++
++  /**
++   * Adds headers to the HTTP response.
++   */
++  public function serve(Request $request) {
++    $file_str = $this->extensionPathResolver->getPath('module', 'islandora_mirador') . '/js/service_worker.js';
++    if (file_exists($file_str)) {
++      $response = new BinaryFileResponse($file_str, 200);
++      $response->headers->set('Content-Type', 'application/javascript');
++      // Allow same origin service worker.
++      $response->headers->set('Service-Worker-Allowed', '/');
++      return $response;
++    }
++    throw new NotFoundHttpException();
++  }
++
++}
