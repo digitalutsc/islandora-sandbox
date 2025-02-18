@@ -4,6 +4,9 @@ file: ''
 types: |-
 
   image/jp2 jp2
+  image/tif tif
+  image/TIF TIF
+  image/tiff tiff
   application/gzip warc
   application/gzip wacz
   application/vnd.apple.mpegurl m3u8
