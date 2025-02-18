@@ -1,0 +1,35 @@
+uuid: 3faa2a22-f29b-44c1-a567-d084255087c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - triplestore_indexer
+label: 'Delete Media'
+name: delete_media_blazegraph
+group: Blazegraph
+description: 'Delete indexed media in Blazegraph when media is deleted'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:media':
+    id: 'entity_bundle:media'
+    negate: false
+    uuid: 4e1a4cc6-d163-4f58-9f3d-f4a30c4c2cad
+    context_mapping:
+      media: '@triplestore_indexer.media_route_context_provider:media'
+    bundles:
+      able_player_caption: able_player_caption
+      audio: audio
+      document: document
+      file: file
+      image: image
+      remote_video: remote_video
+      video: video
+      web_archive: web_archive
+reactions:
+  triplestore_delete_reaction:
+    id: triplestore_delete_reaction
+    actions: delete_media_in_triplestore_advancedqueue
+    saved: false
+weight: -6

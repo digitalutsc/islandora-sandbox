@@ -1,0 +1,46 @@
+uuid: ba15f45f-94ea-4e4f-abd0-fc6472085d06
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - triplestore_indexer
+label: 'Index Taxonomy Terms'
+name: index_taxonomy_terms_blazegraph
+group: Blazegraph
+description: 'Index all taxonomy terms in Blazegraph'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 802ded70-e56d-4c87-86d0-9db5c6da4616
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles:
+      corporate_body: corporate_body
+      country: country
+      exhibit: exhibit
+      family: family
+      genre: genre
+      geo_location: geo_location
+      internet_media_type: internet_media_type
+      islandora_access: islandora_access
+      islandora_display: islandora_display
+      islandora_media_use: islandora_media_use
+      islandora_models: islandora_models
+      language: language
+      person: person
+      physical_form: physical_form
+      pronom: pronom
+      resource_types: resource_types
+      subject: subject
+      tags: tags
+      temporal_subjects: temporal_subjects
+reactions:
+  triplestore_index_reaction:
+    id: triplestore_index_reaction
+    actions: index_taxonomy_term_to_triplestore_advancedqueue
+    saved: false
+weight: -7

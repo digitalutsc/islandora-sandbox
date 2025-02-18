@@ -1,0 +1,28 @@
+uuid: 9a4e531c-80df-4bba-ba6f-928ff8b861e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - triplestore_indexer
+label: 'Index Content'
+name: index_content_blazegraph
+group: Blazegraph
+description: 'Index all Islandora nodes in Blazegraph.'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: cf1d70b2-5944-4694-bbd4-6f4f05c54f7e
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      islandora_object: islandora_object
+reactions:
+  triplestore_index_reaction:
+    id: triplestore_index_reaction
+    actions: index_node_to_triplestore_advancedqueue
+    saved: false
+weight: -8

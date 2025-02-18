@@ -1,0 +1,32 @@
+uuid: eb4e6271-b258-4232-901b-ef2668dd38e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - fits
+label: 'Technical Metadata'
+name: technical_metadata
+group: Fits
+description: 'Generate Technical Metadata in Files from Fits Tool'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:file':
+    id: 'entity_bundle:file'
+    negate: false
+    uuid: b967c433-1af7-46ff-b928-f7b37b5eb3fd
+    context_mapping:
+      file: '@fits.file_route_context_provider:file'
+    bundles:
+      audio: audio
+      document: document
+      file: file
+      image: image
+      video: video
+reactions:
+  fits_reaction:
+    id: fits_reaction
+    actions: fits_action
+    saved: false
+weight: 0

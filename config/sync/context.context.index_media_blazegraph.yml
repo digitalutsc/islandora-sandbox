@@ -1,0 +1,35 @@
+uuid: 6dd7b639-59ea-46a5-8003-e2ec9a954098
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - triplestore_indexer
+label: 'Index Media'
+name: index_media_blazegraph
+group: Blazegraph
+description: 'Index all media bundles in Blazegraph'
+requireAllConditions: false
+disabled: false
+conditions:
+  'entity_bundle:media':
+    id: 'entity_bundle:media'
+    negate: false
+    uuid: a9003468-c946-4f50-b601-fabde24738ca
+    context_mapping:
+      media: '@triplestore_indexer.media_route_context_provider:media'
+    bundles:
+      able_player_caption: able_player_caption
+      audio: audio
+      document: document
+      file: file
+      image: image
+      remote_video: remote_video
+      video: video
+      web_archive: web_archive
+reactions:
+  triplestore_index_reaction:
+    id: triplestore_index_reaction
+    actions: index_media_to_triplestore_advancedqueue
+    saved: false
+weight: -8
